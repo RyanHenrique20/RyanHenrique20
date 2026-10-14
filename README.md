@@ -29,7 +29,7 @@ Aqui no GitHub você acompanha meus projetos e a minha evolução como desenvolv
 <h1>🛠️ Tecnologias</h1> 
  
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,git,github,vscode&theme=dark" alt="Tecnologias" />
+  <img src="https://skillicons.dev/icons?i=html,css,git,github,vscode,php,javascript,mysql,laravel,c,python&theme=dark" alt="Tecnologias" />
 </p>
 <!-- Para adicionar mais: js,ts,react,nodejs,python,java,mysql,postgres,docker -->
  
