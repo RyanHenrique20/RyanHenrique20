@@ -22,7 +22,7 @@ Aqui no GitHub você acompanha meus projetos e a minha evolução como desenvolv
  
 - 🎓 Cursando na **UNICID**
 - 🌱 Aprendendo e praticando todos os dias
-- 🎯 Foco em me tornar **Desenvolvedor FullStack**
+- 🎯 Foco em me tornar **Desenvolvedor Web**
 - 📫 Vamos conversar? Me chama no LinkedIn ou por e-mail
 <br/>
 
