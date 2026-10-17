@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=200&section=header&text=Ryan%20Henrique&fontColor=ffffff&fontSize=60&fontAlignY=38&desc=Desenvolvedor%20FullStack%20em%20forma%C3%A7%C3%A3o&descAlignY=60&descSize=18" alt="Banner" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=200&section=header&text=Ryan%20Henrique&fontColor=ffffff&fontSize=60&fontAlignY=38&desc=Desenvolvedor%20Web%20em%20forma%C3%A7%C3%A3o&descAlignY=60&descSize=18" alt="Banner" />
 <a href="https://github.com/RyanHenrique20">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1200&color=8B5CF6&center=true&vCenter=true&width=520&lines=Estudante+na+UNICID+%F0%9F%8E%93;Apaixonado+por+tecnologia+%F0%9F%92%BB;Aprendendo+e+evoluindo+todo+dia+%F0%9F%9A%80" alt="Digitando..." />
 </a>
