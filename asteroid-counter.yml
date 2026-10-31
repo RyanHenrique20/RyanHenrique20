@@ -28,7 +28,10 @@ jobs:
 
       - name: Gerar todas as seções SVG da página
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Se existir o secret GH_PAT (token pessoal), enxerga também repositórios privados
+          # e contribuições privadas. Sem ele, usa o token automático (só dados públicos).
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          INCLUDE_PRIVATE: ${{ secrets.GH_PAT != '' && '1' || '0' }}
         run: |
           cat > /tmp/build_page.py <<'PYEOF'
           #!/usr/bin/env python3
@@ -176,6 +179,8 @@ jobs:
                       s.update(repos=[], followers=0, commits=0, prs=0, issues=0, reviews=0, repo_count=0, langs=[], longest=0)
                   return s
 
+              incl_private = os.environ.get("INCLUDE_PRIVATE") == "1"   # so com token pessoal (GH_PAT)
+              privacy = "" if incl_private else "privacy:PUBLIC, "
               q = """
               query($login:String!){
                 user(login:$login){
@@ -190,17 +195,17 @@ jobs:
                       weeks{contributionDays{date weekday contributionCount}}
                     }
                   }
-                  repositories(first:100, ownerAffiliations:OWNER, isFork:false, privacy:PUBLIC,
+                  repositories(first:100, ownerAffiliations:OWNER, isFork:false, %PRIVACY%
                                orderBy:{field:PUSHED_AT, direction:DESC}){
                     totalCount
                     nodes{
-                      name description url stargazerCount isArchived pushedAt primaryLanguage{name}
+                      name description url isPrivate stargazerCount isArchived pushedAt primaryLanguage{name}
                       languages(first:6, orderBy:{field:SIZE, direction:DESC}){edges{size node{name}}}
                     }
                   }
                 }
               }"""
-              u = gql(q, {"login": OWNER})["user"]
+              u = gql(q.replace("%PRIVACY%", privacy), {"login": OWNER})["user"]
               cc = u["contributionsCollection"]
               cal = cc["contributionCalendar"]
               repos = u["repositories"]["nodes"]
@@ -774,7 +779,7 @@ jobs:
 
 
           def mission_repos(repos):
-              return [r for r in repos if r["name"].lower() != OWNER.lower()]
+              return [r for r in repos if r["name"].lower() != OWNER.lower() and not r.get("isPrivate")]
 
 
           def build_missions_svg(s):
@@ -882,6 +887,11 @@ jobs:
                   with open(path, "w", encoding="utf-8") as f:
                       f.write(content)
               update_readme(build_links(s["repos"]))
+              nomes = [r["name"] for r in s["repos"]]
+              print(f"repositorios encontrados ({len(nomes)}): {', '.join(nomes[:15]) or 'nenhum'}")
+              print("linguagens:", ", ".join(f"{n}={sz}" for n, sz in s["langs"][:6]) or "nenhuma detectada")
+              if len(nomes) <= 1:
+                  print("AVISO: so ha 0-1 repositorio visivel. Repos privados ou forks nao aparecem sem o token GH_PAT.")
               print(f"{len(files)} SVGs gerados · {s['total']} asteroides, {s['stars']} estrelas, sequência {s['streak']} dias "
                     f"-> {points} pontos · {len(s['repos'])} repositórios")
 
