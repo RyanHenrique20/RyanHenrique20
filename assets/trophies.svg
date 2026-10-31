@@ -7,36 +7,36 @@
 <g filter="url(#glow)"><text x="28" y="36" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">SALA DE TROFEUS</text></g>
 <line x1="28" y1="46" x2="772" y2="46" stroke="#fff" stroke-opacity="0.5"/>
 <text x="28" y="66" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.7">Medalhas ganhas automaticamente: C → B → A → S → SS conforme os números sobem.</text>
-<rect x="28.0" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-<g transform="translate(85.8,140) scale(1.35)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/></g>
-<text x="85.8" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.35">?</text>
-<text x="85.8" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">COMMITS</text>
-<g filter="url(#glow)"><text x="85.8" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">0</text></g>
-<text x="85.8" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 1</text>
-<rect x="153.8" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-<g transform="translate(211.60000000000002,140) scale(1.35)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/></g>
-<text x="211.60000000000002" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.35">?</text>
-<text x="211.60000000000002" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">ESTRELAS</text>
-<g filter="url(#glow)"><text x="211.60000000000002" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">0</text></g>
-<text x="211.60000000000002" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 1</text>
-<rect x="279.6" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-<g transform="translate(337.40000000000003,140) scale(1.35)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/></g>
-<text x="337.40000000000003" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.35">?</text>
-<text x="337.40000000000003" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">ALIADOS</text>
-<g filter="url(#glow)"><text x="337.40000000000003" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">0</text></g>
-<text x="337.40000000000003" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 1</text>
-<rect x="405.4" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-<g transform="translate(463.2,140) scale(1.35)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/></g>
-<text x="463.2" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.35">?</text>
-<text x="463.2" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">REPOSITORIOS</text>
-<g filter="url(#glow)"><text x="463.2" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">0</text></g>
-<text x="463.2" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 1</text>
-<rect x="531.2" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-<g transform="translate(589.0,140) scale(1.35)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/></g>
-<text x="589.0" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.35">?</text>
-<text x="589.0" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">PULL REQUESTS</text>
-<g filter="url(#glow)"><text x="589.0" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.5">0</text></g>
-<text x="589.0" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 1</text>
+<rect x="28.0" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.8"/>
+<g transform="translate(85.8,140) scale(1.35)" filter="url(#glow)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="85.8" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff">C</text>
+<text x="85.8" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff">COMMITS</text>
+<g filter="url(#glow)"><text x="85.8" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff">63</text></g>
+<text x="85.8" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 100</text>
+<rect x="153.8" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.8"/>
+<g transform="translate(211.60000000000002,140) scale(1.35)" filter="url(#glow)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="211.60000000000002" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff">C</text>
+<text x="211.60000000000002" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff">ESTRELAS</text>
+<g filter="url(#glow)"><text x="211.60000000000002" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff">2</text></g>
+<text x="211.60000000000002" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 5</text>
+<rect x="279.6" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.8"/>
+<g transform="translate(337.40000000000003,140) scale(1.35)" filter="url(#glow)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="337.40000000000003" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff">C</text>
+<text x="337.40000000000003" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff">ALIADOS</text>
+<g filter="url(#glow)"><text x="337.40000000000003" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff">6</text></g>
+<text x="337.40000000000003" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 10</text>
+<rect x="405.4" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.8"/>
+<g transform="translate(463.2,140) scale(1.35)" filter="url(#glow)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="463.2" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff">B</text>
+<text x="463.2" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff">REPOSITORIOS</text>
+<g filter="url(#glow)"><text x="463.2" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff">12</text></g>
+<text x="463.2" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 15</text>
+<rect x="531.2" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.8"/>
+<g transform="translate(589.0,140) scale(1.35)" filter="url(#glow)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="589.0" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff">C</text>
+<text x="589.0" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff">PULL REQUESTS</text>
+<g filter="url(#glow)"><text x="589.0" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff">2</text></g>
+<text x="589.0" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 5</text>
 <rect x="657.0" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>
 <g transform="translate(714.8,140) scale(1.35)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.3" stroke-dasharray="3 3"/></g>
 <text x="714.8" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff" opacity="0.35">?</text>

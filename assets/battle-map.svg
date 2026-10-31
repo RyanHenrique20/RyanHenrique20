@@ -3,7 +3,7 @@
 <defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#fff" opacity="0.06"/></pattern></defs>
 <rect width="800" height="190" fill="#000"/>
 <rect x="2" y="2" width="796" height="186" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
-<text x="29" y="30" fill="#fff" font-size="15" font-weight="bold" filter="url(#glow)">AGUARDANDO RADAR...</text>
+<text x="29" y="30" fill="#fff" font-size="15" font-weight="bold" filter="url(#glow)">MAPA DE BATALHA · 79 ASTEROIDES DESTRUIDOS</text>
 <text x="43" y="46" fill="#fff" opacity="0.7" font-size="9">NOV</text>
 <text x="113" y="46" fill="#fff" opacity="0.7" font-size="9">DEZ</text>
 <text x="169" y="46" fill="#fff" opacity="0.7" font-size="9">JAN</text>
@@ -333,33 +333,33 @@
 <rect x="645" y="122" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="645" y="136" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="659" y="52" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="659" y="66" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="659" y="80" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="659" y="94" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="659" y="66" width="11" height="11" fill="#fff" fill-opacity="0.6" stroke-opacity="0.6"/>
+<rect x="659" y="80" width="11" height="11" fill="#fff" fill-opacity="1.0" stroke-opacity="1.0"/>
+<rect x="659" y="94" width="11" height="11" fill="#fff" fill-opacity="0.82" stroke-opacity="0.82"/>
 <rect x="659" y="108" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="659" y="122" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="659" y="136" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="673" y="52" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="673" y="66" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="673" y="80" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="673" y="80" width="11" height="11" fill="#fff" fill-opacity="0.6" stroke-opacity="0.6"/>
 <rect x="673" y="94" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="673" y="108" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="673" y="108" width="11" height="11" fill="#fff" fill-opacity="0.82" stroke-opacity="0.82"/>
 <rect x="673" y="122" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="673" y="136" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="687" y="52" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="687" y="66" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="687" y="80" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="687" y="94" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="687" y="108" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="687" y="94" width="11" height="11" fill="#fff" fill-opacity="0.6" stroke-opacity="0.6"/>
+<rect x="687" y="108" width="11" height="11" fill="#fff" fill-opacity="0.82" stroke-opacity="0.82"/>
 <rect x="687" y="122" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="687" y="136" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="701" y="52" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="701" y="52" width="11" height="11" fill="#fff" fill-opacity="0.35" stroke-opacity="0.35"/>
 <rect x="701" y="66" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="701" y="80" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="701" y="94" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="701" y="94" width="11" height="11" fill="#fff" fill-opacity="0.35" stroke-opacity="0.35"/>
 <rect x="701" y="108" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="701" y="122" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="701" y="136" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="701" y="136" width="11" height="11" fill="#fff" fill-opacity="1.0" stroke-opacity="1.0"/>
 <rect x="715" y="52" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="715" y="66" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="715" y="80" width="11" height="11" fill="none" stroke-opacity="0.22"/>
@@ -382,15 +382,15 @@
 <rect x="743" y="122" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="743" y="136" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="757" y="52" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="757" y="66" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="757" y="66" width="11" height="11" fill="#fff" fill-opacity="0.82" stroke-opacity="0.82"/>
 <rect x="757" y="80" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="757" y="94" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="757" y="108" width="11" height="11" fill="none" stroke-opacity="0.22"/>
 <rect x="757" y="122" width="11" height="11" fill="none" stroke-opacity="0.22"/>
-<rect x="757" y="136" width="11" height="11" fill="none" stroke-opacity="0.22"/>
+<rect x="757" y="136" width="11" height="11" fill="#fff" fill-opacity="1.0" stroke-opacity="1.0"/>
 </g>
 <rect x="27" y="49" width="2" height="101" fill="#fff" opacity="0.45"><animateTransform attributeName="transform" type="translate" from="0 0" to="739 0" dur="7s" repeatCount="indefinite"/></rect>
-<text x="29" y="170" fill="#fff" font-size="12" font-weight="bold">DIAS DE COMBATE: 0  ·  MELHOR DIA: 0 ASTEROIDES</text>
+<text x="29" y="170" fill="#fff" font-size="12" font-weight="bold">DIAS DE COMBATE: 12  ·  MELHOR DIA: 24 ASTEROIDES</text>
 <text x="611" y="170" fill="#fff" opacity="0.7" font-size="10" text-anchor="end">MENOS</text>
 <rect x="617" y="160" width="11" height="11" fill="none" stroke="#fff" stroke-opacity="0.22"/>
 <rect x="631" y="160" width="11" height="11" fill="#fff" fill-opacity="0.35" stroke="#fff" stroke-opacity="0.35"/>

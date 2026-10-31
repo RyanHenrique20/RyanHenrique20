@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 194" width="800" height="194" role="img" aria-label="Missões Ativas (Repositórios)" font-family="Courier New, Courier, monospace">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 464" width="800" height="464" role="img" aria-label="Missões Ativas (Repositórios)" font-family="Courier New, Courier, monospace">
 <title>Missões Ativas (Repositórios)</title>
 <defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#fff" opacity="0.06"/></pattern></defs>
-<rect width="800" height="194" fill="#000"/>
-<rect x="2" y="2" width="796" height="190" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
+<rect width="800" height="464" fill="#000"/>
+<rect x="2" y="2" width="796" height="460" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
 <g filter="url(#glow)"><text x="28" y="36" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">MISSOES ATIVAS · MEUS REPOSITORIOS</text></g>
 <line x1="28" y1="46" x2="772" y2="46" stroke="#fff" stroke-opacity="0.5"/>
 <text x="28" y="66" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.7">Cada repositório é uma missão. A lista se atualiza sozinha.</text>
@@ -13,8 +13,55 @@
 <text x="612" y="88" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">ESTRELAS</text>
 <text x="772" y="88" font-size="9" text-anchor="end" font-weight="normal" fill="#fff" opacity="0.55">STATUS</text>
 <line x1="28" y1="94" x2="772" y2="94" stroke="#fff" stroke-opacity="0.5"/>
-<text x="400" y="126" font-size="14" text-anchor="middle" font-weight="bold" fill="#fff">NENHUMA MISSAO NO RADAR AINDA</text>
-<text x="400" y="148" font-size="11" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.6">Crie um repositório público para abrir a primeira missão.</text>
-<text x="28" y="176" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">EM COMBATE = MEXI NOS ULTIMOS 30 DIAS · EM ORBITA = PARADA · CONCLUIDA = ARQUIVADA</text>
-<rect width="800" height="194" fill="url(#scan)" pointer-events="none"/>
+<text x="28" y="114" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">MISSAO 01</text>
+<g filter="url(#glow)"><text x="28" y="134" font-size="15" text-anchor="start" font-weight="bold" fill="#fff">Santo-Taquito</text></g>
+<text x="268" y="120" font-size="10.5" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">Criação de um site de restaurante</text>
+<text x="268" y="134" font-size="10.5" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">mexicano</text>
+<text x="520" y="126" font-size="11" text-anchor="start" font-weight="bold" fill="#fff">HTML</text>
+<text x="612" y="126" font-size="11" text-anchor="start" font-weight="normal" fill="#fff">* 2</text>
+<rect x="668" y="111" width="104" height="22" fill="#fff"/>
+<text x="720" y="126" font-size="11" text-anchor="middle" font-weight="bold" fill="#000">EM COMBATE</text>
+<line x1="28" y1="147" x2="772" y2="147" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>
+<text x="28" y="168" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">MISSAO 02</text>
+<g filter="url(#glow)"><text x="28" y="188" font-size="15" text-anchor="start" font-weight="bold" fill="#fff">CellGO</text></g>
+<text x="268" y="174" font-size="10.5" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">Missão secreta (sem descrição ainda)</text>
+<text x="520" y="180" font-size="11" text-anchor="start" font-weight="bold" fill="#fff">—</text>
+<text x="612" y="180" font-size="11" text-anchor="start" font-weight="normal" fill="#fff">* 0</text>
+<rect x="668" y="165" width="104" height="22" fill="#fff"/>
+<text x="720" y="180" font-size="11" text-anchor="middle" font-weight="bold" fill="#000">EM COMBATE</text>
+<line x1="28" y1="201" x2="772" y2="201" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>
+<text x="28" y="222" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">MISSAO 03</text>
+<g filter="url(#glow)"><text x="28" y="242" font-size="15" text-anchor="start" font-weight="bold" fill="#fff">exercicio-de-distribu…</text></g>
+<text x="268" y="228" font-size="10.5" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">Missão secreta (sem descrição ainda)</text>
+<text x="520" y="234" font-size="11" text-anchor="start" font-weight="bold" fill="#fff">C</text>
+<text x="612" y="234" font-size="11" text-anchor="start" font-weight="normal" fill="#fff">* 0</text>
+<rect x="668" y="219" width="104" height="22" fill="none" stroke="#fff"/>
+<text x="720" y="234" font-size="11" text-anchor="middle" font-weight="bold" fill="#fff">EM ORBITA</text>
+<line x1="28" y1="255" x2="772" y2="255" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>
+<text x="28" y="276" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">MISSAO 04</text>
+<g filter="url(#glow)"><text x="28" y="296" font-size="15" text-anchor="start" font-weight="bold" fill="#fff">Cardapio</text></g>
+<text x="268" y="282" font-size="10.5" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">Missão secreta (sem descrição ainda)</text>
+<text x="520" y="288" font-size="11" text-anchor="start" font-weight="bold" fill="#fff">HTML</text>
+<text x="612" y="288" font-size="11" text-anchor="start" font-weight="normal" fill="#fff">* 0</text>
+<rect x="668" y="273" width="104" height="22" fill="none" stroke="#fff"/>
+<text x="720" y="288" font-size="11" text-anchor="middle" font-weight="bold" fill="#fff">EM ORBITA</text>
+<line x1="28" y1="309" x2="772" y2="309" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>
+<text x="28" y="330" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">MISSAO 05</text>
+<g filter="url(#glow)"><text x="28" y="350" font-size="15" text-anchor="start" font-weight="bold" fill="#fff">Serenatto</text></g>
+<text x="268" y="336" font-size="10.5" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">Projeto curso alura</text>
+<text x="520" y="342" font-size="11" text-anchor="start" font-weight="bold" fill="#fff">—</text>
+<text x="612" y="342" font-size="11" text-anchor="start" font-weight="normal" fill="#fff">* 0</text>
+<rect x="668" y="327" width="104" height="22" fill="none" stroke="#fff"/>
+<text x="720" y="342" font-size="11" text-anchor="middle" font-weight="bold" fill="#fff">EM ORBITA</text>
+<line x1="28" y1="363" x2="772" y2="363" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>
+<text x="28" y="384" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">MISSAO 06</text>
+<g filter="url(#glow)"><text x="28" y="404" font-size="15" text-anchor="start" font-weight="bold" fill="#fff">sortear-amigo-secreto</text></g>
+<text x="268" y="390" font-size="10.5" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">Missão secreta (sem descrição ainda)</text>
+<text x="520" y="396" font-size="11" text-anchor="start" font-weight="bold" fill="#fff">CSS</text>
+<text x="612" y="396" font-size="11" text-anchor="start" font-weight="normal" fill="#fff">* 0</text>
+<rect x="668" y="381" width="104" height="22" fill="none" stroke="#fff"/>
+<text x="720" y="396" font-size="11" text-anchor="middle" font-weight="bold" fill="#fff">EM ORBITA</text>
+<line x1="28" y1="417" x2="772" y2="417" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>
+<text x="28" y="446" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">EM COMBATE = MEXI NOS ULTIMOS 30 DIAS · EM ORBITA = PARADA · CONCLUIDA = ARQUIVADA</text>
+<rect width="800" height="464" fill="url(#scan)" pointer-events="none"/>
 </svg>

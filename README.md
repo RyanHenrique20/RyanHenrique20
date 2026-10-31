@@ -29,7 +29,7 @@
 <img src="./assets/missions.svg" alt="Missões ativas: meus repositórios" width="100%" />
 
 <!-- MISSOES:START -->
-*Os links das missões aparecem aqui depois da primeira execução do radar.*
+**Entrar em combate:** [Santo-Taquito](https://github.com/RyanHenrique20/Santo-Taquito) · [CellGO](https://github.com/RyanHenrique20/CellGO) · [exercicio-de-distribuicao-de-notas](https://github.com/RyanHenrique20/exercicio-de-distribuicao-de-notas) · [Cardapio](https://github.com/RyanHenrique20/Cardapio) · [Serenatto](https://github.com/RyanHenrique20/Serenatto) · [sortear-amigo-secreto](https://github.com/RyanHenrique20/sortear-amigo-secreto) · [compra-de-ingressos](https://github.com/RyanHenrique20/compra-de-ingressos) · [carrinho-de-compras](https://github.com/RyanHenrique20/carrinho-de-compras)
 <!-- MISSOES:END -->
 
 <img src="./assets/footer.svg" alt="Game on" width="100%" />
