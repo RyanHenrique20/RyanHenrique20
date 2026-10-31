@@ -1,0 +1,35 @@
+name: Generate Snake (Asteroid Eater)
+
+on:
+  # roda a cada 12 horas
+  schedule:
+    - cron: "0 */12 * * *"
+  # permite rodar manualmente pela aba Actions
+  workflow_dispatch:
+  # roda quando você der push na branch principal
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Gerar animação da cobrinha a partir das contribuições
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg?color_snake=#FF0055&color_dots=#1A1A2E,#3B2F7A,#5B3FB5,#8B5CF6,#C4B5FD
+
+      - name: Publicar na branch "output"
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
