@@ -1,28 +1,34 @@
-name: Space Shooter - Asteroid Defense
+name: Asteroid Counter
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    # 30 minutos depois do Space Shooter, para os dois não colidirem no push
+    - cron: '30 0 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-game:
+  counter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 2
+      - uses: actions/checkout@v4
 
-      # Cria a pasta assets/ caso ela ainda não exista no repositório
-      - name: Criar pasta assets
-        run: mkdir -p assets
+      - name: Gerar contador de asteroides destruídos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/gen_counter.py
 
-      - uses: czl9707/gh-space-shooter@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          output-path: 'assets/space-shooter.gif'
-          strategy: 'random'
-          commit-message: 'chore: asteroides destruidos atualizados'
+      - name: Commit e push (com rebase para evitar rejeição)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/asteroid-counter.svg
+          if git diff --cached --quiet; then
+            echo "Nada mudou, sem commit."
+          else
+            git commit -m "chore: contador de asteroides atualizado"
+            git pull --rebase
+            git push
+          fi
