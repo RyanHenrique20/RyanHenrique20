@@ -1,0 +1,915 @@
+name: Atualizar Página SVG (Asteroid Defense)
+
+on:
+  # a cada 6 horas (o gráfico do GitHub pode demorar um pouco para refletir novos commits)
+  schedule:
+    - cron: '30 */6 * * *'
+  # sempre que você der push na branch principal (ignora mudanças só em assets/)
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'assets/**'
+  # botão "Run workflow" na aba Actions
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: asteroid-page
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Gerar todas as seções SVG da página
+        env:
+          # Se existir o secret GH_PAT (token pessoal), enxerga também repositórios privados
+          # e contribuições privadas. Sem ele, usa o token automático (só dados públicos).
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          INCLUDE_PRIVATE: ${{ secrets.GH_PAT != '' && '1' || '0' }}
+        run: |
+          cat > /tmp/build_page.py <<'PYEOF'
+          #!/usr/bin/env python3
+          """Gera a pagina inteira do perfil em SVG, a partir da API do GitHub (sem servicos de terceiros).
+
+          Arquivos gerados em assets/: header, pilot, arsenal, conquests, rules, asteroid-counter, radar, trophies,
+          battle-map, missions, footer e os botoes btn-*.svg. Tambem atualiza a lista de links das missoes no README
+          (entre <!-- MISSOES:START --> e <!-- MISSOES:END -->).
+
+          Regras do jogo:
+            - 1 contribuicao (quadradinho/commit) = 1 asteroide destruido = +100 pontos
+            - 7+ dias seguidos  -> combo x2  (vale para as contribuicoes da sequencia atual)
+            - 30+ dias seguidos -> combo x5  (vale para as contribuicoes da sequencia atual)
+            - 1 estrela recebida (nos repositorios proprios) = +500 pontos
+
+          O texto da pagina (nome, bio, conquistas, tecnologias...) vem de profile.json (opcional).
+          Teste local sem token:  COUNTER_OVERRIDE=62 COUNTER_STARS=0 COUNTER_STREAK=1 python3 build_page.py
+          """
+          import datetime
+          import json
+          import math
+          import os
+          import random
+          import re
+          import urllib.request
+
+          OWNER = os.environ.get("GITHUB_REPOSITORY_OWNER", "RyanHenrique20")
+          OUT_COUNTER = os.environ.get("COUNTER_OUT", "assets/asteroid-counter.svg")
+          OUT_MAP = os.environ.get("MAP_OUT", "assets/battle-map.svg")
+          README = os.environ.get("COUNTER_README", "README.md")
+
+          PTS_PER_ASTEROID = 100
+          PTS_PER_STAR = 500
+
+          # (minimo de asteroides, nivel, patente)
+          LEVELS = [
+              (0, 1, "CADETE ESPACIAL"),
+              (100, 2, "PILOTO DE COMBATE"),
+              (500, 3, "CAPITAO DA FROTA"),
+              (1000, 4, "COMANDANTE ESTELAR"),
+              (2500, 5, "ALMIRANTE DO ESPACO PROFUNDO"),
+          ]
+          MESES = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
+
+          DEFS = ('<defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.9" result="b"/>'
+                  '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'
+                  '<pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#fff" opacity="0.06"/></pattern></defs>')
+
+
+          # --------------------------------------------------------------------------- dados
+          PAGE_DIR = os.environ.get("PAGE_DIR", "assets")
+          PROFILE = os.environ.get("PROFILE_JSON", "profile.json")
+
+
+          def gql(query, variables):
+              token = os.environ["GH_TOKEN"]
+              body = json.dumps({"query": query, "variables": variables}).encode()
+              req = urllib.request.Request(
+                  "https://api.github.com/graphql",
+                  data=body,
+                  headers={"Authorization": f"bearer {token}", "Content-Type": "application/json"},
+              )
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  data = json.load(r)
+              if "errors" in data:
+                  raise SystemExit(f"Erro GraphQL: {data['errors']}")
+              return data["data"]
+
+
+          def compute_streaks(weeks):
+              days = sorted((d for w in weeks for d in w), key=lambda d: d["date"])
+              longest = run = 0
+              for d in days:
+                  if d["contributionCount"] > 0:
+                      run += 1
+                      longest = max(longest, run)
+                  else:
+                      run = 0
+              cur_days = days[:-1] if days and days[-1]["contributionCount"] == 0 else days  # hoje zerado nao quebra
+              streak = streak_c = 0
+              for d in reversed(cur_days):
+                  if d["contributionCount"] > 0:
+                      streak += 1
+                      streak_c += d["contributionCount"]
+                  else:
+                      break
+              return streak, streak_c, longest
+
+
+          def aggregate_langs(repos):
+              agg = {}
+              for r in repos:
+                  for e in ((r.get("languages") or {}).get("edges") or []):
+                      name = e["node"]["name"]
+                      agg[name] = agg.get(name, 0) + e["size"]
+              return sorted(agg.items(), key=lambda kv: -kv[1])
+
+
+          def fake_data():
+              """Dados de mentira, so para testar o visual localmente."""
+              rnd = random.Random(3)
+              today = datetime.date.today()
+              start = today - datetime.timedelta(days=364)
+              start -= datetime.timedelta(days=(start.weekday() + 1) % 7)  # volta ate o domingo
+              weeks, d = [], start
+              while d <= today:
+                  week = []
+                  for _ in range(7):
+                      if d <= today:
+                          c = rnd.choice([0, 0, 0, 0, 1, 1, 2, 3, 5, 8]) if rnd.random() < 0.5 else 0
+                          week.append({"date": d.isoformat(), "weekday": (d.weekday() + 1) % 7, "contributionCount": c})
+                      d += datetime.timedelta(days=1)
+                  weeks.append(week)
+              now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+              repos = [
+                  {"name": "projeto-exemplo", "description": "Descricao de teste | com pipe e um texto bem longo para testar a quebra de linha",
+                   "url": "https://github.com/x/y", "stargazerCount": 2, "isArchived": False, "pushedAt": now,
+                   "primaryLanguage": {"name": "JavaScript"},
+                   "languages": {"edges": [{"size": 5200, "node": {"name": "JavaScript"}}, {"size": 2100, "node": {"name": "CSS"}}, {"size": 900, "node": {"name": "HTML"}}]}},
+                  {"name": "site-antigo-com-nome-bem-comprido-demais", "description": None, "url": "https://github.com/x/z",
+                   "stargazerCount": 0, "isArchived": False, "pushedAt": "2026-05-01T10:00:00Z", "primaryLanguage": None,
+                   "languages": {"edges": [{"size": 3000, "node": {"name": "PHP"}}]}},
+                  {"name": "jogo-c", "description": "Um joguinho em C", "url": "https://github.com/x/w", "stargazerCount": 1,
+                   "isArchived": True, "pushedAt": "2025-12-01T10:00:00Z", "primaryLanguage": {"name": "C"},
+                   "languages": {"edges": [{"size": 1500, "node": {"name": "C"}}]}},
+              ]
+              return weeks, repos
+
+
+          def fetch():
+              if os.environ.get("COUNTER_OVERRIDE"):
+                  total = int(os.environ["COUNTER_OVERRIDE"])
+                  stars = int(os.environ.get("COUNTER_STARS", "0"))
+                  streak = int(os.environ.get("COUNTER_STREAK", "0"))
+                  streak_c = min(total, int(os.environ.get("COUNTER_STREAK_CONTRIB", str(streak))))
+                  weeks, repos = fake_data()
+                  s = dict(total=total, stars=stars, streak=streak, streak_c=streak_c,
+                           longest=int(os.environ.get("COUNTER_LONGEST", str(max(streak, 5)))),
+                           weeks=weeks, repos=repos, followers=3, commits=int(total * 0.9), prs=4, issues=1, reviews=0,
+                           repo_count=len(repos), langs=aggregate_langs(repos))
+                  if os.environ.get("COUNTER_PLACEHOLDER"):
+                      for w in weeks:
+                          for d in w:
+                              d["contributionCount"] = 0
+                      s.update(repos=[], followers=0, commits=0, prs=0, issues=0, reviews=0, repo_count=0, langs=[], longest=0)
+                  return s
+
+              incl_private = os.environ.get("INCLUDE_PRIVATE") == "1"   # so com token pessoal (GH_PAT)
+              privacy = "" if incl_private else "privacy:PUBLIC, "
+              q = """
+              query($login:String!){
+                user(login:$login){
+                  followers{totalCount}
+                  contributionsCollection{
+                    totalCommitContributions
+                    totalPullRequestContributions
+                    totalIssueContributions
+                    totalPullRequestReviewContributions
+                    contributionCalendar{
+                      totalContributions
+                      weeks{contributionDays{date weekday contributionCount}}
+                    }
+                  }
+                  repositories(first:100, ownerAffiliations:OWNER, isFork:false, %PRIVACY%
+                               orderBy:{field:PUSHED_AT, direction:DESC}){
+                    totalCount
+                    nodes{
+                      name description url isPrivate stargazerCount isArchived pushedAt primaryLanguage{name}
+                      languages(first:6, orderBy:{field:SIZE, direction:DESC}){edges{size node{name}}}
+                    }
+                  }
+                }
+              }"""
+              u = gql(q.replace("%PRIVACY%", privacy), {"login": OWNER})["user"]
+              cc = u["contributionsCollection"]
+              cal = cc["contributionCalendar"]
+              repos = u["repositories"]["nodes"]
+              weeks = [w["contributionDays"] for w in cal["weeks"]]
+              streak, streak_c, longest = compute_streaks(weeks)
+              return dict(total=cal["totalContributions"], stars=sum(r["stargazerCount"] for r in repos),
+                          streak=streak, streak_c=streak_c, longest=longest, weeks=weeks, repos=repos,
+                          followers=u["followers"]["totalCount"], commits=cc["totalCommitContributions"],
+                          prs=cc["totalPullRequestContributions"], issues=cc["totalIssueContributions"],
+                          reviews=cc["totalPullRequestReviewContributions"], repo_count=u["repositories"]["totalCount"],
+                          langs=aggregate_langs(repos))
+
+
+          # --------------------------------------------------------------------------- perfil (editavel em profile.json)
+          DEFAULT_PROFILE = {
+              "nome": "Ryan Henrique",
+              "subtitulo": "Piloto Web em Treinamento · Asteroid Defense Unit",
+              "local": "São Paulo · Brasil",
+              "typing": ["Estudante na UNICID", "Apaixonado por tecnologia", "Aprendendo e evoluindo todo dia",
+                         "Cada commit = 1 asteroide destruído"],
+              "ficha": [["PILOTO", "Ryan Henrique"], ["IDADE", "23 ciclos solares"], ["BASE", "São Paulo, Terra"],
+                        ["ACADEMIA", "UNICID"], ["MISSÃO", "Tornar-se Desenvolvedor Web"], ["COMBUSTÍVEL", "café + curiosidade"]],
+              "bio": [
+                  "Fala! Eu sou o Ryan, tenho 23 anos, moro em São Paulo e estudo na UNICID. A tecnologia me conquistou de um jeito que virou rotina: gosto de entender como as coisas funcionam por baixo, construir projetos do zero e aprender com cada erro no caminho.",
+                  "Aqui no GitHub você acompanha meus projetos e a minha evolução como desenvolvedor.",
+              ],
+              "bullets": ["Cursando na UNICID", "Aprendendo e praticando todos os dias", "Foco em me tornar Desenvolvedor Web",
+                          "Vamos conversar? Me chama no LinkedIn ou por e-mail"],
+              "techs": [
+                  {"nome": "HTML", "slot": "ESCUDO"}, {"nome": "CSS", "slot": "ESCUDO"},
+                  {"nome": "JAVASCRIPT", "slot": "LASER PRIMARIO"}, {"nome": "PHP", "slot": "CANHAO DE PLASMA"},
+                  {"nome": "LARAVEL", "slot": "CANHAO DE PLASMA"}, {"nome": "PYTHON", "slot": "MISSEIS"},
+                  {"nome": "C", "slot": "MISSEIS"}, {"nome": "MYSQL", "slot": "BANCO DE MUNICAO"},
+                  {"nome": "GIT", "slot": "NAVEGACAO"}, {"nome": "GITHUB", "slot": "BASE ORBITAL"},
+                  {"nome": "VS CODE", "slot": "PAINEL DE COMANDO"},
+              ],
+              "rank": "RECRUTA ESPACIAL",
+              "conquistas": [
+                  {"nome": "Escudo Forjado", "meta": "HTML & CSS", "req": "Montar páginas completas do zero", "pct": 100},
+                  {"nome": "Navegador Estelar", "meta": "Git & GitHub", "req": "Dominar commits, branches e PRs", "pct": 100},
+                  {"nome": "Laser Calibrado", "meta": "JavaScript", "req": "Criar projetos interativos sozinho", "pct": 70},
+                  {"nome": "Canhão de Plasma", "meta": "PHP + Laravel", "req": "Subir uma aplicação full-stack", "pct": 60},
+                  {"nome": "Míssil Teleguiado", "meta": "Python", "req": "Automatizar tarefas e scripts", "pct": 40},
+                  {"nome": "Piloto Full-Stack", "meta": "Front-End → Full-Stack", "req": "Unir front + back em um projeto real", "pct": 0},
+                  {"nome": "Mestre dos Arcades", "meta": "Desenvolvimento de Games", "req": "Publicar um jogo jogável", "pct": 0},
+                  {"nome": "Engenheiro de Nave", "meta": "Sistemas Operacionais", "req": "Entender Linux a fundo", "pct": 0},
+                  {"nome": "Comunicador Universal", "meta": "Inglês", "req": "Ler documentação e conversar em EN", "pct": 50},
+                  {"nome": "Hangar Lotado", "meta": "Portfólio", "req": "5+ projetos públicos no GitHub", "pct": 30},
+                  {"nome": "Base Orbital Própria", "meta": "Homelab", "req": "Montar um servidor caseiro rodando 24/7", "pct": 0},
+                  {"nome": "CHEFÃO FINAL", "meta": "Dev Web Pleno", "req": "Desbloquear TODAS as conquistas acima", "pct": 0},
+              ],
+          }
+
+
+          def load_profile():
+              p = json.loads(json.dumps(DEFAULT_PROFILE))
+              if os.path.exists(PROFILE):
+                  try:
+                      p.update(json.load(open(PROFILE, encoding="utf-8")))
+                  except Exception as e:  # json quebrado nao pode derrubar a Action
+                      print(f"(profile.json invalido, usando o padrao: {e})")
+              return p
+
+
+          # --------------------------------------------------------------------------- regras
+          def combo_mult(streak):
+              return 5 if streak >= 30 else 2 if streak >= 7 else 1
+
+
+          def level_info(n):
+              cur = LEVELS[0]
+              for lv in LEVELS:
+                  if n >= lv[0]:
+                      cur = lv
+              idx = LEVELS.index(cur)
+              return cur, (LEVELS[idx + 1] if idx + 1 < len(LEVELS) else None)
+
+
+          # --------------------------------------------------------------------------- 1) placar
+          def build_counter(s):
+              total, stars, streak, streak_c = s["total"], s["stars"], s["streak"], s["streak_c"]
+              mult = combo_mult(streak)
+              points = (total - streak_c) * PTS_PER_ASTEROID + streak_c * PTS_PER_ASTEROID * mult + stars * PTS_PER_STAR
+
+              D, COUNT_T = 8.0, 3.0
+              steps = min(points // 100, 60) if points else 0
+              values = [round(i * points / steps) for i in range(steps + 1)] if steps else [points]
+              dt = COUNT_T / max(len(values) - 1, 1)
+
+              cur, nxt = level_info(total)
+              _, lvl, rank = cur
+              if nxt:
+                  frac = (total - cur[0]) / (nxt[0] - cur[0])
+                  prox = f"PROXIMO NIVEL: FALTAM {nxt[0] - total} ASTEROIDES"
+              else:
+                  frac, prox = 1.0, "NIVEL MAXIMO!"
+              cells, filled = 20, int(frac * 20)
+
+              today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+              k = lambda t: f"{min(max(t / D, 0), 1):.4f}"
+              fmt = lambda v: f"{v:06d}"
+              o = ['<?xml version="1.0" encoding="UTF-8"?>',
+                   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 140" width="800" height="140" font-family="Courier New, Courier, monospace">',
+                   DEFS,
+                   '<rect width="800" height="140" fill="#000"/>',
+                   '<rect x="2" y="2" width="796" height="136" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>']
+
+              pts = " ".join(f"{x},{y}" for x, y in [(-24, -8), (-12, -26), (6, -22), (26, -6), (20, 18), (0, 26), (-20, 16)])
+              o.append('<g transform="translate(70,70)" filter="url(#glow)" stroke="#fff" fill="none" stroke-width="2" stroke-linejoin="round">'
+                       f'<polygon points="{pts}"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/></polygon></g>')
+
+              o.append('<g fill="#fff" font-weight="bold" filter="url(#glow)">')
+              o.append('<text x="130" y="30" font-size="15">PONTUACAO</text>')
+              for i, v in enumerate(values):
+                  st = i * dt
+                  e = (i + 1) * dt if i < len(values) - 1 else None
+                  if len(values) == 1:
+                      o.append(f'<text x="130" y="82" font-size="48">{fmt(v)}</text>')
+                      continue
+                  if i == 0:
+                      kt, vv = f"0;{k(e)}", "1;0"
+                  elif e is None:
+                      kt, vv = f"0;{k(st)}", "0;1"
+                  else:
+                      kt, vv = f"0;{k(st)};{k(e)}", "0;1;0"
+                  o.append(f'<text x="130" y="82" font-size="48" opacity="{"1" if i == 0 else "0"}">{fmt(v)}'
+                           f'<animate attributeName="opacity" calcMode="discrete" keyTimes="{kt}" values="{vv}" dur="{D}s" repeatCount="indefinite"/></text>')
+              o.append('</g>')
+
+              conta = f"{total} ASTEROIDES x {PTS_PER_ASTEROID}  +  {stars} ESTRELAS x {PTS_PER_STAR}"
+              if mult > 1:
+                  conta += f"  +  COMBO x{mult}"
+              o.append(f'<text x="130" y="104" fill="#fff" font-size="12" font-weight="bold">{conta}</text>')
+              o.append(f'<text x="130" y="126" fill="#fff" opacity="0.6" font-size="10">{PTS_PER_ASTEROID} PTS POR ASTEROIDE · 12 MESES · ATUALIZADO {today}</text>')
+
+              o.append('<g fill="#fff" font-weight="bold" text-anchor="end" filter="url(#glow)">')
+              o.append(f'<text x="770" y="30" font-size="16">LV.{lvl:02d}  ·  {total} ASTEROIDES</text>')
+              o.append(f'<text x="770" y="52" font-size="13">{rank}</text>')
+              o.append('</g>')
+              cw, gap, x0, y0 = 11, 3, 770 - (20 * 14 - 3), 62
+              o.append('<g stroke="#fff" stroke-width="1.5" fill="none">')
+              for c in range(cells):
+                  o.append(f'<rect x="{x0 + c * (cw + gap)}" y="{y0}" width="{cw}" height="14"{" fill=" + chr(34) + "#fff" + chr(34) if c < filled else ""}/>')
+              o.append('</g>')
+              o.append(f'<text x="770" y="96" fill="#fff" font-size="11" text-anchor="end">{prox}</text>')
+              o.append(f'<text x="770" y="118" fill="#fff" font-size="13" font-weight="bold" text-anchor="end">COMBO x{mult}  ·  SEQUENCIA: {streak} DIAS</text>')
+              o.append('<rect width="800" height="140" fill="url(#scan)" pointer-events="none"/>')
+              o.append('</svg>')
+              return "\n".join(o), points
+
+
+          # --------------------------------------------------------------------------- 2) mapa de batalha
+          def build_map(s):
+              weeks, total = s["weeks"], s["total"]
+              placeholder = bool(os.environ.get("COUNTER_PLACEHOLDER"))
+              cell, gap, x0, y0 = 11, 3, 29, 52
+              step = cell + gap
+              grid_w = max(len(weeks), 1) * step - gap
+              counts = [d["contributionCount"] for w in weeks for d in w]
+              active = sum(1 for c in counts if c > 0)
+              best = max(counts) if counts else 0
+
+              def opacity(c):
+                  if c <= 0:
+                      return None
+                  return 0.35 if c == 1 else 0.6 if c <= 3 else 0.82 if c <= 6 else 1.0
+
+              title = "AGUARDANDO RADAR..." if placeholder else f"MAPA DE BATALHA · {total} ASTEROIDES DESTRUIDOS"
+              o = ['<?xml version="1.0" encoding="UTF-8"?>',
+                   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 190" width="800" height="190" font-family="Courier New, Courier, monospace">',
+                   DEFS,
+                   '<rect width="800" height="190" fill="#000"/>',
+                   '<rect x="2" y="2" width="796" height="186" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>',
+                   f'<text x="29" y="30" fill="#fff" font-size="15" font-weight="bold" filter="url(#glow)">{title}</text>']
+
+              changes, last_month = [], None
+              for wi, week in enumerate(weeks):
+                  if not week:
+                      continue
+                  m = int(week[0]["date"][5:7])
+                  if m != last_month:
+                      changes.append((wi, m))
+                      last_month = m
+              if len(changes) > 1 and changes[1][0] - changes[0][0] < 3:  # evita "OUT" colado em "NOV"
+                  changes = changes[1:]
+              for wi, m in changes:
+                  o.append(f'<text x="{x0 + wi * step}" y="46" fill="#fff" opacity="0.7" font-size="9">{MESES[m - 1]}</text>')
+
+              o.append('<g filter="url(#glow)" stroke="#fff" stroke-width="1">')
+              for wi, week in enumerate(weeks):
+                  for d in week:
+                      x, y = x0 + wi * step, y0 + d["weekday"] * step
+                      op = opacity(d["contributionCount"])
+                      if op is None:
+                          o.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" fill="none" stroke-opacity="0.22"/>')
+                      else:
+                          o.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" fill="#fff" fill-opacity="{op}" stroke-opacity="{op}"/>')
+              o.append('</g>')
+
+              # varredura do radar
+              o.append(f'<rect x="{x0 - 2}" y="{y0 - 3}" width="2" height="{7 * step + 3}" fill="#fff" opacity="0.45">'
+                       f'<animateTransform attributeName="transform" type="translate" from="0 0" to="{grid_w} 0" dur="7s" repeatCount="indefinite"/></rect>')
+
+              o.append(f'<text x="29" y="170" fill="#fff" font-size="12" font-weight="bold">DIAS DE COMBATE: {active}  ·  MELHOR DIA: {best} ASTEROIDES</text>')
+              lx = 771 - 5 * step - 90
+              o.append(f'<text x="{lx}" y="170" fill="#fff" opacity="0.7" font-size="10" text-anchor="end">MENOS</text>')
+              for i, op in enumerate([None, 0.35, 0.6, 0.82, 1.0]):
+                  x = lx + 6 + i * step
+                  if op is None:
+                      o.append(f'<rect x="{x}" y="160" width="{cell}" height="{cell}" fill="none" stroke="#fff" stroke-opacity="0.22"/>')
+                  else:
+                      o.append(f'<rect x="{x}" y="160" width="{cell}" height="{cell}" fill="#fff" fill-opacity="{op}" stroke="#fff" stroke-opacity="{op}"/>')
+              o.append(f'<text x="{lx + 6 + 5 * step + 4}" y="170" fill="#fff" opacity="0.7" font-size="10">MAIS</text>')
+              o.append('<rect width="800" height="190" fill="url(#scan)" pointer-events="none"/>')
+              o.append('</svg>')
+              return "\n".join(o)
+
+
+          # --------------------------------------------------------------------------- ferramentas de desenho
+          AST_PTS = "-20,-6 -10,-18 6,-16 20,-4 16,12 0,18 -16,12"
+          SHIP_PTS = "0,-15 10,13 0,8 -10,13"
+
+
+          def esc(s):
+              return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+          def trunc(s, n):
+              s = str(s)
+              return s if len(s) <= n else s[: n - 1].rstrip() + "…"
+
+
+          def wrap(text, size, max_w):
+              cpl = max(int(max_w / (size * 0.6)), 8)
+              lines, cur = [], ""
+              for w in str(text).split():
+                  if len(w) > cpl:
+                      w = w[: cpl - 1] + "…"
+                  if len(cur) + len(w) + (1 if cur else 0) <= cpl:
+                      cur = (cur + " " + w).strip()
+                  else:
+                      lines.append(cur)
+                      cur = w
+              if cur:
+                  lines.append(cur)
+              return lines
+
+
+          def T(x, y, s, size=13, anchor="start", weight="normal", op=1, fill="#fff"):
+              o = f' opacity="{op}"' if op != 1 else ""
+              return f'<text x="{x}" y="{y}" font-size="{size}" text-anchor="{anchor}" font-weight="{weight}" fill="{fill}"{o}>{esc(s)}</text>'
+
+
+          def fmt_n(n):
+              return f"{int(n):,}".replace(",", ".")
+
+
+          def start(h, label):
+              return ['<?xml version="1.0" encoding="UTF-8"?>',
+                      f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 {h}" width="800" height="{h}" role="img" '
+                      f'aria-label="{esc(label)}" font-family="Courier New, Courier, monospace">',
+                      f"<title>{esc(label)}</title>", DEFS,
+                      f'<rect width="800" height="{h}" fill="#000"/>',
+                      f'<rect x="2" y="2" width="796" height="{h - 4}" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>']
+
+
+          def end(o, h):
+              o.append(f'<rect width="800" height="{h}" fill="url(#scan)" pointer-events="none"/>')
+              o.append("</svg>")
+              return "\n".join(o)
+
+
+          def title(o, txt, sub=None):
+              o.append(f'<g filter="url(#glow)">{T(28, 36, txt, 17, weight="bold")}</g>')
+              o.append('<line x1="28" y1="46" x2="772" y2="46" stroke="#fff" stroke-opacity="0.5"/>')
+              if sub:
+                  o.append(T(28, 66, sub, 11, op=0.7))
+
+
+          def explosion(x, y, t_hit, D, dur=0.55):
+              """Faiscas em linha que se abrem quando o asteroide e atingido."""
+              k = lambda t: f"{min(max(t / D, 0), 1):.4f}"
+              lines = "".join(
+                  f'<line x1="{4 * math.cos(math.radians(a)):.1f}" y1="{4 * math.sin(math.radians(a)):.1f}" '
+                  f'x2="{11 * math.cos(math.radians(a + 10)):.1f}" y2="{11 * math.sin(math.radians(a + 10)):.1f}"/>'
+                  for a in range(0, 360, 45))
+              return (f'<g transform="translate({x},{y})" stroke="#fff" stroke-width="1.6"><g opacity="0">'
+                      f'<animateTransform attributeName="transform" type="scale" keyTimes="0;{k(t_hit)};{k(t_hit + dur)};1" values="0.4;0.4;3;3" dur="{D}s" repeatCount="indefinite"/>'
+                      f'<animate attributeName="opacity" calcMode="discrete" keyTimes="0;{k(t_hit)};{k(t_hit + dur)}" values="0;1;0" dur="{D}s" repeatCount="indefinite"/>{lines}</g></g>')
+
+
+          def cycle_texts(x, y, items, size, slot, anchor="middle", weight="bold"):
+              """Mostra um texto por vez (troca discreta), em loop."""
+              if len(items) == 1:
+                  return [T(x, y, items[0], size, anchor, weight)]
+              D = slot * len(items)
+              k = lambda t: f"{t / D:.4f}"
+              out = []
+              for i, txt in enumerate(items):
+                  s_t, e_t = i * slot, (i + 1) * slot
+                  if i == 0:
+                      kt, vv = f"0;{k(e_t)}", "1;0"
+                  elif i == len(items) - 1:
+                      kt, vv = f"0;{k(s_t)}", "0;1"
+                  else:
+                      kt, vv = f"0;{k(s_t)};{k(e_t)}", "0;1;0"
+                  out.append(f'<text x="{x}" y="{y}" font-size="{size}" text-anchor="{anchor}" font-weight="{weight}" fill="#fff" opacity="{"1" if i == 0 else "0"}">{esc(txt)}'
+                             f'<animate attributeName="opacity" calcMode="discrete" keyTimes="{kt}" values="{vv}" dur="{D}s" repeatCount="indefinite"/></text>')
+              return out
+
+
+          def blink(x, y, txt, size, anchor="start", op=0.8):
+              return (f'<text x="{x}" y="{y}" font-size="{size}" text-anchor="{anchor}" fill="#fff" opacity="{op}">{esc(txt)}'
+                      f'<animate attributeName="opacity" calcMode="discrete" keyTimes="0;0.5" values="1;0" dur="1s" repeatCount="indefinite"/></text>')
+
+
+          # --------------------------------------------------------------------------- 01) cabecalho
+          def build_header(P):
+              h = 250
+              o = start(h, f"{P['nome']} — {P['subtitulo']}")
+              rnd = random.Random(5)
+              for _ in range(42):
+                  x, y, r = rnd.randint(14, 786), rnd.randint(70, 238), rnd.choice([0.8, 1, 1.4])
+                  if 150 < x < 650 and 74 < y < 216:  # deixa o miolo livre para o texto
+                      continue
+                  o.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#fff"><animate attributeName="opacity" values="0.15;1;0.15" '
+                           f'dur="{rnd.uniform(1.5, 4):.1f}s" begin="{rnd.uniform(0, 3):.1f}s" repeatCount="indefinite"/></circle>')
+
+              D2 = 4.0
+              k2 = lambda t: f"{t / D2:.4f}"
+              o.append('<g filter="url(#glow)" stroke="#fff" fill="none" stroke-width="2" stroke-linejoin="round">')
+              o.append(f'<g transform="translate(62,40) rotate(90)"><polygon points="{SHIP_PTS}" fill="#000"/></g>')
+              o.append(f'<g transform="translate(738,40)"><g><animate attributeName="opacity" calcMode="discrete" keyTimes="0;{k2(1.1)};{k2(2.2)}" values="1;0;1" dur="{D2}s" repeatCount="indefinite"/>'
+                       f'<polygon points="{AST_PTS}"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/></polygon></g></g>')
+              o.append('</g>')
+              o.append(f'<circle r="2.5" fill="#fff" opacity="0"><animateTransform attributeName="transform" type="translate" keyTimes="0;{k2(0.5)};{k2(1.1)};1" '
+                       f'values="86,40;86,40;716,40;716,40" dur="{D2}s" repeatCount="indefinite"/>'
+                       f'<animate attributeName="opacity" calcMode="discrete" keyTimes="0;{k2(0.5)};{k2(1.1)}" values="0;1;0" dur="{D2}s" repeatCount="indefinite"/></circle>')
+              o.append(explosion(738, 40, 1.1, D2))
+
+              o.append(f'<g filter="url(#glow)"><text x="400" y="118" font-size="56" text-anchor="middle" font-weight="bold" fill="#fff" letter-spacing="3">{esc(P["nome"].upper())}</text></g>')
+              o.append(T(400, 152, P["subtitulo"].upper(), 15, "middle", op=0.85))
+              o.append('<line x1="250" y1="168" x2="550" y2="168" stroke="#fff" stroke-opacity="0.4"/>')
+              items = [f"> {t.upper()}_" for t in P["typing"]] or [""]
+              o.extend(cycle_texts(400, 206, items, 17, 2.6))
+              o.append(blink(28, 238, "INSERT COIN", 11))
+              o.append(T(772, 238, P["local"].upper(), 11, "end", op=0.7))
+              return end(o, h)
+
+
+          def build_buttons(P):
+              def btn(label, w):
+                  o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} 44" width="{w}" height="44" role="img" aria-label="{esc(label)}" font-family="Courier New, Courier, monospace">',
+                       DEFS,
+                       f'<rect width="{w}" height="44" fill="#000"/>',
+                       f'<rect x="2" y="2" width="{w - 4}" height="40" fill="none" stroke="#fff" stroke-width="2"/>',
+                       f'<path d="M8,12 V8 H12 M{w - 8},12 V8 H{w - 12} M8,32 V36 H12 M{w - 8},32 V36 H{w - 12}" stroke="#fff" fill="none" stroke-width="1.5"/>',
+                       f'<g filter="url(#glow)">{T(w / 2, 28, label, 15, "middle", "bold")}</g>',
+                       "</svg>"]
+                  return "\n".join(o)
+              return {"btn-linkedin.svg": btn("[ LINKEDIN ]", 176), "btn-email.svg": btn("[ E-MAIL ]", 156),
+                      "btn-local.svg": btn("SETOR: " + P["local"].upper(), 280)}
+
+
+          # --------------------------------------------------------------------------- 02) painel do piloto
+          def build_pilot(P):
+              ficha = P["ficha"]
+              row_h = 40
+              left_h = 40 + len(ficha) * row_h
+              size, lh, max_w = 13, 18, 396 - 36
+              items = []
+              for para in P["bio"]:
+                  items += [("t", l) for l in wrap(para, size, max_w)] + [("gap", "")]
+              for b in P["bullets"]:
+                  ls = wrap(b, size, max_w - 2 * size * 0.6)
+                  items += [("t", ("> " if i == 0 else "  ") + l) for i, l in enumerate(ls)]
+              right_h = 44 + sum(lh if k == "t" else 10 for k, _ in items) + 12
+              box_h = max(left_h, right_h)
+              y0 = 64
+              h = y0 + box_h + 24
+              o = start(h, "Painel do Piloto")
+              title(o, "PAINEL DO PILOTO")
+              o.append(f'<rect x="28" y="{y0}" width="330" height="{box_h}" fill="none" stroke="#fff" stroke-opacity="0.7"/>')
+              o.append(f'<rect x="376" y="{y0}" width="396" height="{box_h}" fill="none" stroke="#fff" stroke-opacity="0.7"/>')
+              o.append(T(44, y0 + 20, "FICHA DA NAVE", 10, op=0.6))
+              o.append(T(392, y0 + 20, "DIARIO DE BORDO", 10, op=0.6))
+              for i, (lab, val) in enumerate(ficha):
+                  y = y0 + 40 + i * row_h
+                  o.append(T(44, y, lab, 10, op=0.6))
+                  o.append(T(44, y + 17, trunc(val, 34), 14, weight="bold"))
+                  o.append(f'<line x1="44" y1="{y + 24}" x2="342" y2="{y + 24}" stroke="#fff" stroke-opacity="0.15"/>')
+              y = y0 + 44
+              for k, txt in items:
+                  if k == "t":
+                      o.append(T(392, y, txt, size))
+                      y += lh
+                  else:
+                      y += 10
+              return end(o, h)
+
+
+          # --------------------------------------------------------------------------- 03) arsenal
+          def build_arsenal(P):
+              techs = list(P["techs"])
+              cols, gap, sw, sh = 4, 12, 177, 58
+              while len(techs) % cols:
+                  techs.append(None)
+              rows = len(techs) // cols
+              y0 = 84
+              h = y0 + rows * (sh + gap) + 12
+              o = start(h, "Arsenal de Tecnologias")
+              title(o, "ARSENAL DE TECNOLOGIAS", "Armamento equipado na nave. Cada linguagem é um canhão contra o campo de asteroides.")
+              rnd = random.Random(9)
+              for i, t in enumerate(techs):
+                  x, y = 28 + (i % cols) * (sw + gap), y0 + (i // cols) * (sh + gap)
+                  if t is None:
+                      o.append(f'<rect x="{x}" y="{y}" width="{sw}" height="{sh}" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>')
+                      o.append(T(x + 14, y + 34, "SLOT LIVRE · EM BREVE", 10, op=0.4))
+                      continue
+                  o.append(f'<rect x="{x}" y="{y}" width="{sw}" height="{sh}" fill="none" stroke="#fff" stroke-width="1.5"/>')
+                  o.append(f'<g filter="url(#glow)">{T(x + 14, y + 27, trunc(t["nome"], 12), 17, weight="bold")}</g>')
+                  o.append(T(x + 14, y + 46, t["slot"], 10, op=0.65))
+                  o.append(f'<rect x="{x + sw - 18}" y="{y + 10}" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" '
+                           f'dur="{rnd.uniform(1.2, 2.6):.1f}s" begin="{rnd.uniform(0, 2):.1f}s" repeatCount="indefinite"/></rect>')
+              return end(o, h)
+
+
+          # --------------------------------------------------------------------------- 04) conquistas
+          def build_conquests(P):
+              cs = P["conquistas"]
+              n = len(cs)
+              unlocked = sum(1 for c in cs if c["pct"] >= 100)
+              prog = sum(1 for c in cs if 0 < c["pct"] < 100)
+              locked = n - unlocked - prog
+              overall = round(unlocked / n * 100) if n else 0
+              y0, row_h = 84, 40
+              foot = y0 + n * row_h + 14
+              h = foot + 66
+              o = start(h, "Sala de Conquistas")
+              title(o, "SALA DE CONQUISTAS · METAS DA CAMPANHA", "Cada meta é uma conquista do jogo. Complete o requisito para desbloquear a medalha.")
+              for i, c in enumerate(cs):
+                  y = y0 + i * row_h
+                  pct = max(0, min(100, int(c["pct"])))
+                  op = 1 if pct > 0 else 0.45
+                  o.append(T(28, y + 22, f"{i + 1:02d}", 11, op=0.5))
+                  o.append(T(60, y + 16, trunc(c["nome"].upper(), 28), 13, weight="bold", op=op))
+                  o.append(T(60, y + 31, trunc(f"{c['meta']} · {c['req']}", 62), 10, op=0.6 if pct > 0 else 0.35))
+                  filled = round(pct / 100 * 20)
+                  for k in range(20):
+                      if k < filled:
+                          o.append(f'<rect x="{500 + k * 7}" y="{y + 9}" width="6" height="14" fill="#fff"/>')
+                      else:
+                          o.append(f'<rect x="{500 + k * 7}" y="{y + 9}" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>')
+                  if pct >= 100:
+                      o.append(f'<rect x="654" y="{y + 8}" width="118" height="16" fill="#fff"/>')
+                      o.append(T(713, y + 20, "DESBLOQUEADA", 11, "middle", "bold", fill="#000"))
+                  elif pct > 0:
+                      o.append(T(772, y + 21, f"{pct}%", 14, "end", "bold"))
+                  else:
+                      o.append(T(772, y + 21, "BLOQUEADA", 11, "end", op=0.4))
+                  if i == n - 1:
+                      o.append(f'<rect x="20" y="{y - 2}" width="760" height="{row_h - 6}" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-dasharray="5 4"/>')
+              o.append(f'<line x1="28" y1="{foot}" x2="772" y2="{foot}" stroke="#fff" stroke-opacity="0.5"/>')
+              o.append(f'<g filter="url(#glow)">{T(28, foot + 26, f"PLACAR DA CAMPANHA: {unlocked} / {n} DESBLOQUEADAS · {prog} EM PROGRESSO · {locked} BLOQUEADAS", 13, weight="bold")}</g>')
+              o.append(T(28, foot + 48, f"PROGRESSO GERAL: {overall}%   ·   RANK: {P['rank'].upper()}", 12, op=0.8))
+              return end(o, h)
+
+
+          # --------------------------------------------------------------------------- 05) regras
+          def build_rules():
+              rows = [("1 CONTRIBUICAO (COMMIT)", f"+{PTS_PER_ASTEROID} PTS · 1 ASTEROIDE DESTRUIDO"),
+                      ("7 DIAS SEGUIDOS", "COMBO x2 NOS PONTOS DA SEQUENCIA"),
+                      ("30 DIAS SEGUIDOS", "COMBO x5 · MODO HIPERESPACO"),
+                      ("1 ESTRELA RECEBIDA", f"+{PTS_PER_STAR} PTS BONUS"),
+                      ("META CUMPRIDA", "CONQUISTA DESBLOQUEADA")]
+              y0, rh = 62, 34
+              h = y0 + len(rows) * rh + 22
+              o = start(h, "Regras do jogo")
+              title(o, "REGRAS DO JOGO")
+              for i, (a, b) in enumerate(rows):
+                  y = y0 + i * rh
+                  o.append(T(44, y + 22, a, 13, weight="bold"))
+                  o.append(T(756, y + 22, b, 13, "end"))
+                  o.append(f'<line x1="28" y1="{y + rh - 4}" x2="772" y2="{y + rh - 4}" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>')
+              return end(o, h)
+
+
+          # --------------------------------------------------------------------------- 06) radar (estatisticas)
+          def build_radar(s):
+              placeholder = bool(os.environ.get("COUNTER_PLACEHOLDER"))
+              h = 432
+              o = start(h, "Radar de Desempenho Espacial")
+              title(o, "RADAR DE DESEMPENHO ESPACIAL", "AGUARDANDO RADAR..." if placeholder else "últimos 12 meses · dados direto da API do GitHub, sem serviços de terceiros")
+              y0 = 84
+              o.append(f'<rect x="28" y="{y0}" width="364" height="226" fill="none" stroke="#fff" stroke-opacity="0.7"/>')
+              o.append(f'<rect x="408" y="{y0}" width="364" height="226" fill="none" stroke="#fff" stroke-opacity="0.7"/>')
+              o.append(T(44, y0 + 20, "PLACAR DE DESTRUICAO", 10, op=0.6))
+              o.append(T(424, y0 + 20, "MUNICAO MAIS USADA", 10, op=0.6))
+              rows = [("ASTEROIDES DESTRUIDOS", s["total"]), ("COMMITS", s["commits"]), ("PULL REQUESTS", s["prs"]),
+                      ("ISSUES", s["issues"]), ("REVISOES DE CODIGO", s["reviews"]), ("ESTRELAS RECEBIDAS", s["stars"]),
+                      ("REPOSITORIOS PUBLICOS", s["repo_count"]), ("ALIADOS (SEGUIDORES)", s["followers"])]
+              for i, (lab, val) in enumerate(rows):
+                  y = y0 + 46 + i * 24
+                  o.append(T(44, y, lab, 12, op=0.85))
+                  o.append(f'<g filter="url(#glow)">{T(376, y, fmt_n(val), 15, "end", "bold")}</g>')
+                  o.append(f'<line x1="44" y1="{y + 7}" x2="376" y2="{y + 7}" stroke="#fff" stroke-opacity="0.12"/>')
+              langs = s["langs"][:6]
+              tot = sum(sz for _, sz in langs)
+              if not langs or tot == 0:
+                  o.append(T(424, y0 + 60, "AGUARDANDO DADOS DE LINGUAGEM", 11, op=0.5))
+              for i, (name, sz) in enumerate(langs):
+                  y = y0 + 46 + i * 30
+                  pct = sz / tot * 100
+                  o.append(T(424, y, trunc(name.upper(), 20), 12, weight="bold"))
+                  o.append(T(756, y, f"{pct:.1f}%", 12, "end"))
+                  o.append(f'<rect x="424" y="{y + 7}" width="332" height="8" fill="none" stroke="#fff" stroke-opacity="0.6"/>')
+                  o.append(f'<rect x="424" y="{y + 7}" width="{max(pct, 1) / 100 * 332:.1f}" height="8" fill="#fff"/>')
+              py = 336
+              o.append(f'<rect x="28" y="{py}" width="744" height="76" fill="none" stroke="#fff" stroke-opacity="0.7"/>')
+              cells = [(s["streak"], "SEQUENCIA ATUAL (DIAS)"), (s["longest"], "MAIOR SEQUENCIA (DIAS)"), (f"x{combo_mult(s['streak'])}", "COMBO ATUAL")]
+              for i, (v, lab) in enumerate(cells):
+                  cx = 28 + 124 + i * 248
+                  o.append(f'<g filter="url(#glow)">{T(cx, py + 44, v, 34, "middle", "bold")}</g>')
+                  o.append(T(cx, py + 64, lab, 10, "middle", op=0.65))
+                  if i:
+                      o.append(f'<line x1="{28 + i * 248}" y1="{py + 10}" x2="{28 + i * 248}" y2="{py + 66}" stroke="#fff" stroke-opacity="0.3"/>')
+              return end(o, h)
+
+
+          # --------------------------------------------------------------------------- 07) trofeus
+          RANKS = ["C", "B", "A", "S", "SS"]
+
+
+          def build_trophies(s):
+              cats = [("COMMITS", s["commits"], [1, 100, 500, 1000, 2500]), ("ESTRELAS", s["stars"], [1, 5, 25, 100, 500]),
+                      ("ALIADOS", s["followers"], [1, 10, 50, 200, 1000]), ("REPOSITORIOS", s["repo_count"], [1, 5, 15, 30, 60]),
+                      ("PULL REQUESTS", s["prs"], [1, 5, 25, 100, 300]), ("ISSUES", s["issues"], [1, 5, 20, 50, 150])]
+              h = 262
+              o = start(h, "Sala de Troféus")
+              title(o, "SALA DE TROFEUS", "Medalhas ganhas automaticamente: C → B → A → S → SS conforme os números sobem.")
+              y0 = 84
+              for i, (lab, v, th) in enumerate(cats):
+                  x = 28 + i * 125.8
+                  idx = sum(1 for t in th if v >= t) - 1
+                  nxt = th[idx + 1] if idx + 1 < len(th) else None
+                  on = idx >= 0
+                  dash_t = "" if on else ' stroke-dasharray="4 4"'
+                  o.append(f'<rect x="{x:.1f}" y="{y0}" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="{0.8 if on else 0.3}"{dash_t}/>')
+                  cx, cy = x + 57.8, y0 + 56
+                  st = 'stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"'
+                  dim = "" if on else ' stroke-opacity="0.3" stroke-dasharray="3 3"'
+                  glow = ' filter="url(#glow)"' if on else ""
+                  o.append(f'<g transform="translate({cx},{cy}) scale(1.35)"{glow}>'
+                           f'<path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" {st}{dim}/>'
+                           f'<path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" {st}{dim}/>'
+                           f'</g>')
+                  o.append(T(cx, cy - 2, RANKS[idx] if on else "?", 17, "middle", "bold", op=1 if on else 0.35))
+                  o.append(T(cx, y0 + 112, lab, 10, "middle", "bold", op=1 if on else 0.5))
+                  o.append(f'<g filter="url(#glow)">{T(cx, y0 + 133, fmt_n(v), 18, "middle", "bold", op=1 if on else 0.5)}</g>')
+                  o.append(T(cx, y0 + 149, f"PROX: {fmt_n(nxt)}" if nxt else "RANK MAXIMO", 9, "middle", op=0.55))
+              return end(o, h)
+
+
+          # --------------------------------------------------------------------------- 08) missoes (repositorios)
+          def repo_status(r):
+              now = datetime.datetime.now(datetime.timezone.utc)
+              pushed = datetime.datetime.fromisoformat(r["pushedAt"].replace("Z", "+00:00"))
+              if r.get("isArchived"):
+                  return "CONCLUIDA"
+              return "EM COMBATE" if (now - pushed).days <= 30 else "EM ORBITA"
+
+
+          def mission_repos(repos):
+              return [r for r in repos if r["name"].lower() != OWNER.lower() and not r.get("isPrivate")]
+
+
+          def build_missions_svg(s):
+              repos = mission_repos(s["repos"])[:6]
+              y0, rh = 96, 54
+              h = y0 + max(len(repos), 1) * rh + 44
+              o = start(h, "Missões Ativas (Repositórios)")
+              title(o, "MISSOES ATIVAS · MEUS REPOSITORIOS", "Cada repositório é uma missão. A lista se atualiza sozinha.")
+              for x, txt, anc in [(28, "MISSAO", "start"), (268, "OBJETIVO", "start"), (520, "ARMA", "start"), (612, "ESTRELAS", "start"), (772, "STATUS", "end")]:
+                  o.append(T(x, y0 - 8, txt, 9, anc, op=0.55))
+              o.append(f'<line x1="28" y1="{y0 - 2}" x2="772" y2="{y0 - 2}" stroke="#fff" stroke-opacity="0.5"/>')
+              if not repos:
+                  o.append(T(400, y0 + 30, "NENHUMA MISSAO NO RADAR AINDA", 14, "middle", "bold"))
+                  o.append(T(400, y0 + 52, "Crie um repositório público para abrir a primeira missão.", 11, "middle", op=0.6))
+              for i, r in enumerate(repos):
+                  y = y0 + i * rh
+                  o.append(T(28, y + 18, f"MISSAO {i + 1:02d}", 9, op=0.55))
+                  o.append(f'<g filter="url(#glow)">{T(28, y + 38, trunc(r["name"], 22), 15, weight="bold")}</g>')
+                  desc = (r.get("description") or "Missão secreta (sem descrição ainda)").replace("\n", " ").strip()
+                  dl = wrap(desc, 10.5, 232)
+                  if len(dl) > 2:
+                      dl = [dl[0], dl[1].rstrip(".,;: ")[:-1] + "…"]
+                  for j, ln in enumerate(dl[:2]):
+                      o.append(T(268, y + 24 + j * 14, ln, 10.5, op=0.8))
+                  lang = (r.get("primaryLanguage") or {}).get("name") or "—"
+                  o.append(T(520, y + 30, trunc(lang.upper(), 12), 11, weight="bold"))
+                  o.append(T(612, y + 30, f"* {r['stargazerCount']}", 11))
+                  st = repo_status(r)
+                  if st == "EM COMBATE":
+                      o.append(f'<rect x="668" y="{y + 15}" width="104" height="22" fill="#fff"/>')
+                      o.append(T(720, y + 30, st, 11, "middle", "bold", fill="#000"))
+                  else:
+                      dash = ' stroke-dasharray="3 3"' if st == "CONCLUIDA" else ""
+                      o.append(f'<rect x="668" y="{y + 15}" width="104" height="22" fill="none" stroke="#fff"{dash}/>')
+                      o.append(T(720, y + 30, st, 11, "middle", "bold"))
+                  o.append(f'<line x1="28" y1="{y + rh - 3}" x2="772" y2="{y + rh - 3}" stroke="#fff" stroke-opacity="0.18" stroke-dasharray="3 4"/>')
+              o.append(T(28, h - 18, "EM COMBATE = MEXI NOS ULTIMOS 30 DIAS · EM ORBITA = PARADA · CONCLUIDA = ARQUIVADA", 9, op=0.55))
+              return end(o, h)
+
+
+          def build_links(repos):
+              rs = mission_repos(repos)[:8]
+              if not rs:
+                  return ""
+              return "**Entrar em combate:** " + " · ".join(f"[{r['name']}]({r['url']})" for r in rs)
+
+
+          # --------------------------------------------------------------------------- 09) rodape
+          def build_footer(P):
+              h = 130
+              o = start(h, "Game on")
+              D2 = 4.0
+              k2 = lambda t: f"{t / D2:.4f}"
+              o.append('<g filter="url(#glow)" stroke="#fff" fill="none" stroke-width="2" stroke-linejoin="round">')
+              o.append(f'<g transform="translate(60,64) rotate(90)"><polygon points="{SHIP_PTS}" fill="#000"/></g>')
+              o.append(f'<g transform="translate(740,64)"><g><animate attributeName="opacity" calcMode="discrete" keyTimes="0;{k2(1.1)};{k2(2.2)}" values="1;0;1" dur="{D2}s" repeatCount="indefinite"/>'
+                       f'<polygon points="{AST_PTS}"><animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="9s" repeatCount="indefinite"/></polygon></g></g>')
+              o.append('</g>')
+              o.append(f'<circle r="2.5" fill="#fff" opacity="0"><animateTransform attributeName="transform" type="translate" keyTimes="0;{k2(0.5)};{k2(1.1)};1" '
+                       f'values="84,64;84,64;718,64;718,64" dur="{D2}s" repeatCount="indefinite"/>'
+                       f'<animate attributeName="opacity" calcMode="discrete" keyTimes="0;{k2(0.5)};{k2(1.1)}" values="0;1;0" dur="{D2}s" repeatCount="indefinite"/></circle>')
+              o.append(explosion(740, 64, 1.1, D2))
+              o.append(f'<g filter="url(#glow)">{T(400, 62, "GAME ON", 38, "middle", "bold")}</g>')
+              o.append(blink(400, 92, "▶ PRESS START ◀", 14, "middle", 1))
+              o.append(T(400, 116, f"© 2026 {P['nome'].upper()} · 1 COMMIT = 1 ASTEROIDE", 10, "middle", op=0.6))
+              return end(o, h)
+
+
+          # --------------------------------------------------------------------------- README (links das missoes)
+          def update_readme(block):
+              if not os.path.exists(README):
+                  print(f"(sem {README} aqui, pulando os links das missões)")
+                  return
+              text = open(README, encoding="utf-8").read()
+              pat = re.compile(r"(<!-- MISSOES:START -->).*?(<!-- MISSOES:END -->)", re.S)
+              if not pat.search(text):
+                  print("(marcadores MISSOES não encontrados no README, pulando)")
+                  return
+              new = pat.sub(lambda m: f"{m.group(1)}\n{block}\n{m.group(2)}", text)
+              if new != text:
+                  open(README, "w", encoding="utf-8").write(new)
+
+
+          def main():
+              P = load_profile()
+              s = fetch()
+              counter_svg, points = build_counter(s)
+              files = {
+                  os.path.join(PAGE_DIR, "header.svg"): build_header(P),
+                  os.path.join(PAGE_DIR, "pilot.svg"): build_pilot(P),
+                  os.path.join(PAGE_DIR, "arsenal.svg"): build_arsenal(P),
+                  os.path.join(PAGE_DIR, "conquests.svg"): build_conquests(P),
+                  os.path.join(PAGE_DIR, "rules.svg"): build_rules(),
+                  os.path.join(PAGE_DIR, "radar.svg"): build_radar(s),
+                  os.path.join(PAGE_DIR, "trophies.svg"): build_trophies(s),
+                  os.path.join(PAGE_DIR, "missions.svg"): build_missions_svg(s),
+                  os.path.join(PAGE_DIR, "footer.svg"): build_footer(P),
+                  OUT_COUNTER: counter_svg,
+                  OUT_MAP: build_map(s),
+              }
+              for name, content in build_buttons(P).items():
+                  files[os.path.join(PAGE_DIR, name)] = content
+              for path, content in files.items():
+                  os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+                  with open(path, "w", encoding="utf-8") as f:
+                      f.write(content)
+              update_readme(build_links(s["repos"]))
+              nomes = [r["name"] for r in s["repos"]]
+              print(f"repositorios encontrados ({len(nomes)}): {', '.join(nomes[:15]) or 'nenhum'}")
+              print("linguagens:", ", ".join(f"{n}={sz}" for n, sz in s["langs"][:6]) or "nenhuma detectada")
+              if len(nomes) <= 1:
+                  print("AVISO: so ha 0-1 repositorio visivel. Repos privados ou forks nao aparecem sem o token GH_PAT.")
+              print(f"{len(files)} SVGs gerados · {s['total']} asteroides, {s['stars']} estrelas, sequência {s['streak']} dias "
+                    f"-> {points} pontos · {len(s['repos'])} repositórios")
+
+
+          if __name__ == "__main__":
+              main()
+          PYEOF
+          python3 /tmp/build_page.py
+
+      - name: Commit e push (com rebase para evitar rejeição)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A assets README.md
+          if git diff --cached --quiet; then
+            echo "Nada mudou, sem commit."
+          else
+            git commit -m "chore: página SVG atualizada"
+            git pull --rebase
+            git push
+          fi
