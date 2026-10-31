@@ -96,25 +96,25 @@
       "nome": "Escudo Forjado",
       "meta": "HTML & CSS",
       "req": "Montar páginas completas do zero",
-      "pct": 100
+      "pct": 60
     },
     {
       "nome": "Navegador Estelar",
       "meta": "Git & GitHub",
       "req": "Dominar commits, branches e PRs",
-      "pct": 100
+      "pct": 60
     },
     {
       "nome": "Laser Calibrado",
       "meta": "JavaScript",
       "req": "Criar projetos interativos sozinho",
-      "pct": 70
+      "pct": 40
     },
     {
       "nome": "Canhão de Plasma",
       "meta": "PHP + Laravel",
       "req": "Subir uma aplicação full-stack",
-      "pct": 60
+      "pct": 40
     },
     {
       "nome": "Míssil Teleguiado",
@@ -144,7 +144,7 @@
       "nome": "Comunicador Universal",
       "meta": "Inglês",
       "req": "Ler documentação e conversar em EN",
-      "pct": 50
+      "pct": 20
     },
     {
       "nome": "Hangar Lotado",
