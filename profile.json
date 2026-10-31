@@ -1,0 +1,168 @@
+{
+  "nome": "Ryan Henrique",
+  "subtitulo": "Piloto Web em Treinamento · Asteroid Defense Unit",
+  "local": "São Paulo · Brasil",
+  "typing": [
+    "Estudante na UNICID",
+    "Apaixonado por tecnologia",
+    "Aprendendo e evoluindo todo dia",
+    "Cada commit = 1 asteroide destruído"
+  ],
+  "ficha": [
+    [
+      "PILOTO",
+      "Ryan Henrique"
+    ],
+    [
+      "IDADE",
+      "23 ciclos solares"
+    ],
+    [
+      "BASE",
+      "São Paulo, Terra"
+    ],
+    [
+      "ACADEMIA",
+      "UNICID"
+    ],
+    [
+      "MISSÃO",
+      "Tornar-se Desenvolvedor Web"
+    ],
+    [
+      "COMBUSTÍVEL",
+      "café + curiosidade"
+    ]
+  ],
+  "bio": [
+    "Fala! Eu sou o Ryan, tenho 23 anos, moro em São Paulo e estudo na UNICID. A tecnologia me conquistou de um jeito que virou rotina: gosto de entender como as coisas funcionam por baixo, construir projetos do zero e aprender com cada erro no caminho.",
+    "Aqui no GitHub você acompanha meus projetos e a minha evolução como desenvolvedor."
+  ],
+  "bullets": [
+    "Cursando na UNICID",
+    "Aprendendo e praticando todos os dias",
+    "Foco em me tornar Desenvolvedor Web",
+    "Vamos conversar? Me chama no LinkedIn ou por e-mail"
+  ],
+  "techs": [
+    {
+      "nome": "HTML",
+      "slot": "ESCUDO"
+    },
+    {
+      "nome": "CSS",
+      "slot": "ESCUDO"
+    },
+    {
+      "nome": "JAVASCRIPT",
+      "slot": "LASER PRIMARIO"
+    },
+    {
+      "nome": "PHP",
+      "slot": "CANHAO DE PLASMA"
+    },
+    {
+      "nome": "LARAVEL",
+      "slot": "CANHAO DE PLASMA"
+    },
+    {
+      "nome": "PYTHON",
+      "slot": "MISSEIS"
+    },
+    {
+      "nome": "C",
+      "slot": "MISSEIS"
+    },
+    {
+      "nome": "MYSQL",
+      "slot": "BANCO DE MUNICAO"
+    },
+    {
+      "nome": "GIT",
+      "slot": "NAVEGACAO"
+    },
+    {
+      "nome": "GITHUB",
+      "slot": "BASE ORBITAL"
+    },
+    {
+      "nome": "VS CODE",
+      "slot": "PAINEL DE COMANDO"
+    }
+  ],
+  "rank": "RECRUTA ESPACIAL",
+  "conquistas": [
+    {
+      "nome": "Escudo Forjado",
+      "meta": "HTML & CSS",
+      "req": "Montar páginas completas do zero",
+      "pct": 100
+    },
+    {
+      "nome": "Navegador Estelar",
+      "meta": "Git & GitHub",
+      "req": "Dominar commits, branches e PRs",
+      "pct": 100
+    },
+    {
+      "nome": "Laser Calibrado",
+      "meta": "JavaScript",
+      "req": "Criar projetos interativos sozinho",
+      "pct": 70
+    },
+    {
+      "nome": "Canhão de Plasma",
+      "meta": "PHP + Laravel",
+      "req": "Subir uma aplicação full-stack",
+      "pct": 60
+    },
+    {
+      "nome": "Míssil Teleguiado",
+      "meta": "Python",
+      "req": "Automatizar tarefas e scripts",
+      "pct": 40
+    },
+    {
+      "nome": "Piloto Full-Stack",
+      "meta": "Front-End → Full-Stack",
+      "req": "Unir front + back em um projeto real",
+      "pct": 0
+    },
+    {
+      "nome": "Mestre dos Arcades",
+      "meta": "Desenvolvimento de Games",
+      "req": "Publicar um jogo jogável",
+      "pct": 0
+    },
+    {
+      "nome": "Engenheiro de Nave",
+      "meta": "Sistemas Operacionais",
+      "req": "Entender Linux a fundo",
+      "pct": 0
+    },
+    {
+      "nome": "Comunicador Universal",
+      "meta": "Inglês",
+      "req": "Ler documentação e conversar em EN",
+      "pct": 50
+    },
+    {
+      "nome": "Hangar Lotado",
+      "meta": "Portfólio",
+      "req": "5+ projetos públicos no GitHub",
+      "pct": 30
+    },
+    {
+      "nome": "Base Orbital Própria",
+      "meta": "Homelab",
+      "req": "Montar um servidor caseiro rodando 24/7",
+      "pct": 0
+    },
+    {
+      "nome": "CHEFÃO FINAL",
+      "meta": "Dev Web Pleno",
+      "req": "Desbloquear TODAS as conquistas acima",
+      "pct": 0
+    }
+  ]
+}

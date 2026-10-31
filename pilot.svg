@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 398" width="800" height="398" role="img" aria-label="Painel do Piloto" font-family="Courier New, Courier, monospace">
+<title>Painel do Piloto</title>
+<defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#fff" opacity="0.06"/></pattern></defs>
+<rect width="800" height="398" fill="#000"/>
+<rect x="2" y="2" width="796" height="394" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
+<g filter="url(#glow)"><text x="28" y="36" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">PAINEL DO PILOTO</text></g>
+<line x1="28" y1="46" x2="772" y2="46" stroke="#fff" stroke-opacity="0.5"/>
+<rect x="28" y="64" width="330" height="310" fill="none" stroke="#fff" stroke-opacity="0.7"/>
+<rect x="376" y="64" width="396" height="310" fill="none" stroke="#fff" stroke-opacity="0.7"/>
+<text x="44" y="84" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">FICHA DA NAVE</text>
+<text x="392" y="84" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">DIARIO DE BORDO</text>
+<text x="44" y="104" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">PILOTO</text>
+<text x="44" y="121" font-size="14" text-anchor="start" font-weight="bold" fill="#fff">Ryan Henrique</text>
+<line x1="44" y1="128" x2="342" y2="128" stroke="#fff" stroke-opacity="0.15"/>
+<text x="44" y="144" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">IDADE</text>
+<text x="44" y="161" font-size="14" text-anchor="start" font-weight="bold" fill="#fff">23 ciclos solares</text>
+<line x1="44" y1="168" x2="342" y2="168" stroke="#fff" stroke-opacity="0.15"/>
+<text x="44" y="184" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">BASE</text>
+<text x="44" y="201" font-size="14" text-anchor="start" font-weight="bold" fill="#fff">São Paulo, Terra</text>
+<line x1="44" y1="208" x2="342" y2="208" stroke="#fff" stroke-opacity="0.15"/>
+<text x="44" y="224" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">ACADEMIA</text>
+<text x="44" y="241" font-size="14" text-anchor="start" font-weight="bold" fill="#fff">UNICID</text>
+<line x1="44" y1="248" x2="342" y2="248" stroke="#fff" stroke-opacity="0.15"/>
+<text x="44" y="264" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">MISSÃO</text>
+<text x="44" y="281" font-size="14" text-anchor="start" font-weight="bold" fill="#fff">Tornar-se Desenvolvedor Web</text>
+<line x1="44" y1="288" x2="342" y2="288" stroke="#fff" stroke-opacity="0.15"/>
+<text x="44" y="304" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">COMBUSTÍVEL</text>
+<text x="44" y="321" font-size="14" text-anchor="start" font-weight="bold" fill="#fff">café + curiosidade</text>
+<line x1="44" y1="328" x2="342" y2="328" stroke="#fff" stroke-opacity="0.15"/>
+<text x="392" y="108" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">Fala! Eu sou o Ryan, tenho 23 anos, moro em</text>
+<text x="392" y="126" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">São Paulo e estudo na UNICID. A tecnologia me</text>
+<text x="392" y="144" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">conquistou de um jeito que virou rotina: gosto</text>
+<text x="392" y="162" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">de entender como as coisas funcionam por</text>
+<text x="392" y="180" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">baixo, construir projetos do zero e aprender</text>
+<text x="392" y="198" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">com cada erro no caminho.</text>
+<text x="392" y="226" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">Aqui no GitHub você acompanha meus projetos e</text>
+<text x="392" y="244" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">a minha evolução como desenvolvedor.</text>
+<text x="392" y="272" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">&gt; Cursando na UNICID</text>
+<text x="392" y="290" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">&gt; Aprendendo e praticando todos os dias</text>
+<text x="392" y="308" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">&gt; Foco em me tornar Desenvolvedor Web</text>
+<text x="392" y="326" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">&gt; Vamos conversar? Me chama no LinkedIn ou por</text>
+<text x="392" y="344" font-size="13" text-anchor="start" font-weight="normal" fill="#fff">  e-mail</text>
+<rect width="800" height="398" fill="url(#scan)" pointer-events="none"/>
+</svg>

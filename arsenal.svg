@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 306" width="800" height="306" role="img" aria-label="Arsenal de Tecnologias" font-family="Courier New, Courier, monospace">
+<title>Arsenal de Tecnologias</title>
+<defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#fff" opacity="0.06"/></pattern></defs>
+<rect width="800" height="306" fill="#000"/>
+<rect x="2" y="2" width="796" height="302" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
+<g filter="url(#glow)"><text x="28" y="36" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">ARSENAL DE TECNOLOGIAS</text></g>
+<line x1="28" y1="46" x2="772" y2="46" stroke="#fff" stroke-opacity="0.5"/>
+<text x="28" y="66" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.7">Armamento equipado na nave. Cada linguagem é um canhão contra o campo de asteroides.</text>
+<rect x="28" y="84" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="42" y="111" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">HTML</text></g>
+<text x="42" y="130" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">ESCUDO</text>
+<rect x="187" y="94" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="1.8s" begin="0.7s" repeatCount="indefinite"/></rect>
+<rect x="217" y="84" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="231" y="111" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">CSS</text></g>
+<text x="231" y="130" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">ESCUDO</text>
+<rect x="376" y="94" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="1.4s" begin="1.7s" repeatCount="indefinite"/></rect>
+<rect x="406" y="84" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="420" y="111" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">JAVASCRIPT</text></g>
+<text x="420" y="130" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">LASER PRIMARIO</text>
+<rect x="565" y="94" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="1.2s" begin="1.0s" repeatCount="indefinite"/></rect>
+<rect x="595" y="84" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="609" y="111" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">PHP</text></g>
+<text x="609" y="130" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">CANHAO DE PLASMA</text>
+<rect x="754" y="94" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="2.5s" begin="0.2s" repeatCount="indefinite"/></rect>
+<rect x="28" y="154" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="42" y="181" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">LARAVEL</text></g>
+<text x="42" y="200" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">CANHAO DE PLASMA</text>
+<rect x="187" y="164" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="2.0s" begin="1.2s" repeatCount="indefinite"/></rect>
+<rect x="217" y="154" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="231" y="181" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">PYTHON</text></g>
+<text x="231" y="200" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">MISSEIS</text>
+<rect x="376" y="164" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="1.3s" begin="0.8s" repeatCount="indefinite"/></rect>
+<rect x="406" y="154" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="420" y="181" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">C</text></g>
+<text x="420" y="200" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">MISSEIS</text>
+<rect x="565" y="164" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="2.2s" begin="0.9s" repeatCount="indefinite"/></rect>
+<rect x="595" y="154" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="609" y="181" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">MYSQL</text></g>
+<text x="609" y="200" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">BANCO DE MUNICAO</text>
+<rect x="754" y="164" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="2.2s" begin="0.3s" repeatCount="indefinite"/></rect>
+<rect x="28" y="224" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="42" y="251" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">GIT</text></g>
+<text x="42" y="270" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">NAVEGACAO</text>
+<rect x="187" y="234" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="1.5s" begin="0.2s" repeatCount="indefinite"/></rect>
+<rect x="217" y="224" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="231" y="251" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">GITHUB</text></g>
+<text x="231" y="270" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">BASE ORBITAL</text>
+<rect x="376" y="234" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="1.9s" begin="1.8s" repeatCount="indefinite"/></rect>
+<rect x="406" y="224" width="177" height="58" fill="none" stroke="#fff" stroke-width="1.5"/>
+<g filter="url(#glow)"><text x="420" y="251" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">VS CODE</text></g>
+<text x="420" y="270" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.65">PAINEL DE COMANDO</text>
+<rect x="565" y="234" width="7" height="7" fill="#fff"><animate attributeName="opacity" values="1;0.15;1" dur="2.0s" begin="1.5s" repeatCount="indefinite"/></rect>
+<rect x="595" y="224" width="177" height="58" fill="none" stroke="#fff" stroke-opacity="0.3" stroke-dasharray="4 4"/>
+<text x="609" y="258" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.4">SLOT LIVRE · EM BREVE</text>
+<rect width="800" height="306" fill="url(#scan)" pointer-events="none"/>
+</svg>

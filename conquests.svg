@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 644" width="800" height="644" role="img" aria-label="Sala de Conquistas" font-family="Courier New, Courier, monospace">
+<title>Sala de Conquistas</title>
+<defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#fff" opacity="0.06"/></pattern></defs>
+<rect width="800" height="644" fill="#000"/>
+<rect x="2" y="2" width="796" height="640" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
+<g filter="url(#glow)"><text x="28" y="36" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">SALA DE CONQUISTAS · METAS DA CAMPANHA</text></g>
+<line x1="28" y1="46" x2="772" y2="46" stroke="#fff" stroke-opacity="0.5"/>
+<text x="28" y="66" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.7">Cada meta é uma conquista do jogo. Complete o requisito para desbloquear a medalha.</text>
+<text x="28" y="106" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">01</text>
+<text x="60" y="100" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">ESCUDO FORJADO</text>
+<text x="60" y="115" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">HTML &amp; CSS · Montar páginas completas do zero</text>
+<rect x="500" y="93" width="6" height="14" fill="#fff"/>
+<rect x="507" y="93" width="6" height="14" fill="#fff"/>
+<rect x="514" y="93" width="6" height="14" fill="#fff"/>
+<rect x="521" y="93" width="6" height="14" fill="#fff"/>
+<rect x="528" y="93" width="6" height="14" fill="#fff"/>
+<rect x="535" y="93" width="6" height="14" fill="#fff"/>
+<rect x="542" y="93" width="6" height="14" fill="#fff"/>
+<rect x="549" y="93" width="6" height="14" fill="#fff"/>
+<rect x="556" y="93" width="6" height="14" fill="#fff"/>
+<rect x="563" y="93" width="6" height="14" fill="#fff"/>
+<rect x="570" y="93" width="6" height="14" fill="#fff"/>
+<rect x="577" y="93" width="6" height="14" fill="#fff"/>
+<rect x="584" y="93" width="6" height="14" fill="#fff"/>
+<rect x="591" y="93" width="6" height="14" fill="#fff"/>
+<rect x="598" y="93" width="6" height="14" fill="#fff"/>
+<rect x="605" y="93" width="6" height="14" fill="#fff"/>
+<rect x="612" y="93" width="6" height="14" fill="#fff"/>
+<rect x="619" y="93" width="6" height="14" fill="#fff"/>
+<rect x="626" y="93" width="6" height="14" fill="#fff"/>
+<rect x="633" y="93" width="6" height="14" fill="#fff"/>
+<rect x="654" y="92" width="118" height="16" fill="#fff"/>
+<text x="713" y="104" font-size="11" text-anchor="middle" font-weight="bold" fill="#000">DESBLOQUEADA</text>
+<text x="28" y="146" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">02</text>
+<text x="60" y="140" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">NAVEGADOR ESTELAR</text>
+<text x="60" y="155" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">Git &amp; GitHub · Dominar commits, branches e PRs</text>
+<rect x="500" y="133" width="6" height="14" fill="#fff"/>
+<rect x="507" y="133" width="6" height="14" fill="#fff"/>
+<rect x="514" y="133" width="6" height="14" fill="#fff"/>
+<rect x="521" y="133" width="6" height="14" fill="#fff"/>
+<rect x="528" y="133" width="6" height="14" fill="#fff"/>
+<rect x="535" y="133" width="6" height="14" fill="#fff"/>
+<rect x="542" y="133" width="6" height="14" fill="#fff"/>
+<rect x="549" y="133" width="6" height="14" fill="#fff"/>
+<rect x="556" y="133" width="6" height="14" fill="#fff"/>
+<rect x="563" y="133" width="6" height="14" fill="#fff"/>
+<rect x="570" y="133" width="6" height="14" fill="#fff"/>
+<rect x="577" y="133" width="6" height="14" fill="#fff"/>
+<rect x="584" y="133" width="6" height="14" fill="#fff"/>
+<rect x="591" y="133" width="6" height="14" fill="#fff"/>
+<rect x="598" y="133" width="6" height="14" fill="#fff"/>
+<rect x="605" y="133" width="6" height="14" fill="#fff"/>
+<rect x="612" y="133" width="6" height="14" fill="#fff"/>
+<rect x="619" y="133" width="6" height="14" fill="#fff"/>
+<rect x="626" y="133" width="6" height="14" fill="#fff"/>
+<rect x="633" y="133" width="6" height="14" fill="#fff"/>
+<rect x="654" y="132" width="118" height="16" fill="#fff"/>
+<text x="713" y="144" font-size="11" text-anchor="middle" font-weight="bold" fill="#000">DESBLOQUEADA</text>
+<text x="28" y="186" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">03</text>
+<text x="60" y="180" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">LASER CALIBRADO</text>
+<text x="60" y="195" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">JavaScript · Criar projetos interativos sozinho</text>
+<rect x="500" y="173" width="6" height="14" fill="#fff"/>
+<rect x="507" y="173" width="6" height="14" fill="#fff"/>
+<rect x="514" y="173" width="6" height="14" fill="#fff"/>
+<rect x="521" y="173" width="6" height="14" fill="#fff"/>
+<rect x="528" y="173" width="6" height="14" fill="#fff"/>
+<rect x="535" y="173" width="6" height="14" fill="#fff"/>
+<rect x="542" y="173" width="6" height="14" fill="#fff"/>
+<rect x="549" y="173" width="6" height="14" fill="#fff"/>
+<rect x="556" y="173" width="6" height="14" fill="#fff"/>
+<rect x="563" y="173" width="6" height="14" fill="#fff"/>
+<rect x="570" y="173" width="6" height="14" fill="#fff"/>
+<rect x="577" y="173" width="6" height="14" fill="#fff"/>
+<rect x="584" y="173" width="6" height="14" fill="#fff"/>
+<rect x="591" y="173" width="6" height="14" fill="#fff"/>
+<rect x="598" y="173" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="173" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="173" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="173" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="173" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="173" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="185" font-size="14" text-anchor="end" font-weight="bold" fill="#fff">70%</text>
+<text x="28" y="226" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">04</text>
+<text x="60" y="220" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">CANHÃO DE PLASMA</text>
+<text x="60" y="235" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">PHP + Laravel · Subir uma aplicação full-stack</text>
+<rect x="500" y="213" width="6" height="14" fill="#fff"/>
+<rect x="507" y="213" width="6" height="14" fill="#fff"/>
+<rect x="514" y="213" width="6" height="14" fill="#fff"/>
+<rect x="521" y="213" width="6" height="14" fill="#fff"/>
+<rect x="528" y="213" width="6" height="14" fill="#fff"/>
+<rect x="535" y="213" width="6" height="14" fill="#fff"/>
+<rect x="542" y="213" width="6" height="14" fill="#fff"/>
+<rect x="549" y="213" width="6" height="14" fill="#fff"/>
+<rect x="556" y="213" width="6" height="14" fill="#fff"/>
+<rect x="563" y="213" width="6" height="14" fill="#fff"/>
+<rect x="570" y="213" width="6" height="14" fill="#fff"/>
+<rect x="577" y="213" width="6" height="14" fill="#fff"/>
+<rect x="584" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="213" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="225" font-size="14" text-anchor="end" font-weight="bold" fill="#fff">60%</text>
+<text x="28" y="266" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">05</text>
+<text x="60" y="260" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">MÍSSIL TELEGUIADO</text>
+<text x="60" y="275" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">Python · Automatizar tarefas e scripts</text>
+<rect x="500" y="253" width="6" height="14" fill="#fff"/>
+<rect x="507" y="253" width="6" height="14" fill="#fff"/>
+<rect x="514" y="253" width="6" height="14" fill="#fff"/>
+<rect x="521" y="253" width="6" height="14" fill="#fff"/>
+<rect x="528" y="253" width="6" height="14" fill="#fff"/>
+<rect x="535" y="253" width="6" height="14" fill="#fff"/>
+<rect x="542" y="253" width="6" height="14" fill="#fff"/>
+<rect x="549" y="253" width="6" height="14" fill="#fff"/>
+<rect x="556" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="563" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="570" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="253" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="265" font-size="14" text-anchor="end" font-weight="bold" fill="#fff">40%</text>
+<text x="28" y="306" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">06</text>
+<text x="60" y="300" font-size="13" text-anchor="start" font-weight="bold" fill="#fff" opacity="0.45">PILOTO FULL-STACK</text>
+<text x="60" y="315" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.35">Front-End → Full-Stack · Unir front + back em um projeto real</text>
+<rect x="500" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="507" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="514" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="521" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="528" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="535" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="542" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="549" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="556" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="563" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="570" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="293" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="305" font-size="11" text-anchor="end" font-weight="normal" fill="#fff" opacity="0.4">BLOQUEADA</text>
+<text x="28" y="346" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">07</text>
+<text x="60" y="340" font-size="13" text-anchor="start" font-weight="bold" fill="#fff" opacity="0.45">MESTRE DOS ARCADES</text>
+<text x="60" y="355" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.35">Desenvolvimento de Games · Publicar um jogo jogável</text>
+<rect x="500" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="507" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="514" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="521" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="528" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="535" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="542" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="549" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="556" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="563" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="570" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="333" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="345" font-size="11" text-anchor="end" font-weight="normal" fill="#fff" opacity="0.4">BLOQUEADA</text>
+<text x="28" y="386" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">08</text>
+<text x="60" y="380" font-size="13" text-anchor="start" font-weight="bold" fill="#fff" opacity="0.45">ENGENHEIRO DE NAVE</text>
+<text x="60" y="395" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.35">Sistemas Operacionais · Entender Linux a fundo</text>
+<rect x="500" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="507" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="514" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="521" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="528" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="535" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="542" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="549" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="556" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="563" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="570" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="373" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="385" font-size="11" text-anchor="end" font-weight="normal" fill="#fff" opacity="0.4">BLOQUEADA</text>
+<text x="28" y="426" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">09</text>
+<text x="60" y="420" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">COMUNICADOR UNIVERSAL</text>
+<text x="60" y="435" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">Inglês · Ler documentação e conversar em EN</text>
+<rect x="500" y="413" width="6" height="14" fill="#fff"/>
+<rect x="507" y="413" width="6" height="14" fill="#fff"/>
+<rect x="514" y="413" width="6" height="14" fill="#fff"/>
+<rect x="521" y="413" width="6" height="14" fill="#fff"/>
+<rect x="528" y="413" width="6" height="14" fill="#fff"/>
+<rect x="535" y="413" width="6" height="14" fill="#fff"/>
+<rect x="542" y="413" width="6" height="14" fill="#fff"/>
+<rect x="549" y="413" width="6" height="14" fill="#fff"/>
+<rect x="556" y="413" width="6" height="14" fill="#fff"/>
+<rect x="563" y="413" width="6" height="14" fill="#fff"/>
+<rect x="570" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="413" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="425" font-size="14" text-anchor="end" font-weight="bold" fill="#fff">50%</text>
+<text x="28" y="466" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">10</text>
+<text x="60" y="460" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">HANGAR LOTADO</text>
+<text x="60" y="475" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">Portfólio · 5+ projetos públicos no GitHub</text>
+<rect x="500" y="453" width="6" height="14" fill="#fff"/>
+<rect x="507" y="453" width="6" height="14" fill="#fff"/>
+<rect x="514" y="453" width="6" height="14" fill="#fff"/>
+<rect x="521" y="453" width="6" height="14" fill="#fff"/>
+<rect x="528" y="453" width="6" height="14" fill="#fff"/>
+<rect x="535" y="453" width="6" height="14" fill="#fff"/>
+<rect x="542" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="549" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="556" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="563" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="570" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="453" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="465" font-size="14" text-anchor="end" font-weight="bold" fill="#fff">30%</text>
+<text x="28" y="506" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">11</text>
+<text x="60" y="500" font-size="13" text-anchor="start" font-weight="bold" fill="#fff" opacity="0.45">BASE ORBITAL PRÓPRIA</text>
+<text x="60" y="515" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.35">Homelab · Montar um servidor caseiro rodando 24/7</text>
+<rect x="500" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="507" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="514" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="521" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="528" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="535" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="542" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="549" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="556" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="563" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="570" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="493" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="505" font-size="11" text-anchor="end" font-weight="normal" fill="#fff" opacity="0.4">BLOQUEADA</text>
+<text x="28" y="546" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.5">12</text>
+<text x="60" y="540" font-size="13" text-anchor="start" font-weight="bold" fill="#fff" opacity="0.45">CHEFÃO FINAL</text>
+<text x="60" y="555" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.35">Dev Web Pleno · Desbloquear TODAS as conquistas acima</text>
+<rect x="500" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="507" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="514" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="521" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="528" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="535" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="542" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="549" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="556" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="563" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="570" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="577" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="584" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="591" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="598" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="605" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="612" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="619" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="626" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<rect x="633" y="533" width="6" height="14" fill="none" stroke="#fff" stroke-opacity="0.3"/>
+<text x="772" y="545" font-size="11" text-anchor="end" font-weight="normal" fill="#fff" opacity="0.4">BLOQUEADA</text>
+<rect x="20" y="522" width="760" height="34" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-dasharray="5 4"/>
+<line x1="28" y1="578" x2="772" y2="578" stroke="#fff" stroke-opacity="0.5"/>
+<g filter="url(#glow)"><text x="28" y="604" font-size="13" text-anchor="start" font-weight="bold" fill="#fff">PLACAR DA CAMPANHA: 2 / 12 DESBLOQUEADAS · 5 EM PROGRESSO · 5 BLOQUEADAS</text></g>
+<text x="28" y="626" font-size="12" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.8">PROGRESSO GERAL: 17%   ·   RANK: RECRUTA ESPACIAL</text>
+<rect width="800" height="644" fill="url(#scan)" pointer-events="none"/>
+</svg>

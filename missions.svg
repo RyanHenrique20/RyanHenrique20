@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 194" width="800" height="194" role="img" aria-label="Missões Ativas (Repositórios)" font-family="Courier New, Courier, monospace">
+<title>Missões Ativas (Repositórios)</title>
+<defs><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#fff" opacity="0.06"/></pattern></defs>
+<rect width="800" height="194" fill="#000"/>
+<rect x="2" y="2" width="796" height="190" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
+<g filter="url(#glow)"><text x="28" y="36" font-size="17" text-anchor="start" font-weight="bold" fill="#fff">MISSOES ATIVAS · MEUS REPOSITORIOS</text></g>
+<line x1="28" y1="46" x2="772" y2="46" stroke="#fff" stroke-opacity="0.5"/>
+<text x="28" y="66" font-size="11" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.7">Cada repositório é uma missão. A lista se atualiza sozinha.</text>
+<text x="28" y="88" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">MISSAO</text>
+<text x="268" y="88" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">OBJETIVO</text>
+<text x="520" y="88" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">ARMA</text>
+<text x="612" y="88" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">ESTRELAS</text>
+<text x="772" y="88" font-size="9" text-anchor="end" font-weight="normal" fill="#fff" opacity="0.55">STATUS</text>
+<line x1="28" y1="94" x2="772" y2="94" stroke="#fff" stroke-opacity="0.5"/>
+<text x="400" y="126" font-size="14" text-anchor="middle" font-weight="bold" fill="#fff">NENHUMA MISSAO NO RADAR AINDA</text>
+<text x="400" y="148" font-size="11" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.6">Crie um repositório público para abrir a primeira missão.</text>
+<text x="28" y="176" font-size="9" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.55">EM COMBATE = MEXI NOS ULTIMOS 30 DIAS · EM ORBITA = PARADA · CONCLUIDA = ARQUIVADA</text>
+<rect width="800" height="194" fill="url(#scan)" pointer-events="none"/>
+</svg>
