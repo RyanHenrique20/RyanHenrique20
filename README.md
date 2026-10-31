@@ -162,7 +162,7 @@ Aqui no GitHub você acompanha meus projetos e a minha evolução como desenvolv
 ### 🔥 Combo Multiplicador
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=RyanHenrique20&hide_border=true&locale=pt_BR&background=000000&ring=FFFFFF&fire=FFFFFF&currStreakLabel=FFFFFF&sideLabels=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=AAAAAA&stroke=000000" alt="Sequência de contribuições" />
+  <img src="https://streak-stats.demolab.com/?user=RyanHenrique20&hide_border=true&locale=pt_BR&background=000000&ring=FFFFFF&fire=FFFFFF&currStreakLabel=FFFFFF&sideLabels=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=AAAAAA&stroke=000000" alt="Sequência de contribuições" />
 </div>
 
 ### 🏆 Conquistas Desbloqueadas
