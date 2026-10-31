@@ -128,6 +128,10 @@ Aqui no GitHub você acompanha meus projetos e a minha evolução como desenvolv
 </div>
 
 <div align="center">
+  <img src="./assets/asteroid-counter.svg" alt="Contador de asteroides destruídos: 1 quadradinho = 1 asteroide" width="100%" />
+</div>
+
+<div align="center">
 
 | 🎯 Placar | 📌 Regra |
 |:--:|:--|
@@ -168,13 +172,29 @@ Aqui no GitHub você acompanha meus projetos e a minha evolução como desenvolv
 ### 🏆 Conquistas Desbloqueadas
 
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=RyanHenrique20&theme=darkhub&no-frame=true&no-bg=true&margin-w=6&row=1&column=6" alt="Troféus" />
+  <img src="https://github-profile-trophy.vercel.app/?username=RyanHenrique20&title=Commits,Stars,Followers,Repositories,PullRequest,Issues&theme=darkhub&no-frame=true&no-bg=true&margin-w=6&row=1&column=6" alt="Troféus principais" />
+  <br/><br/>
+  <sub>🎖️ <b>Todas as medalhas da campanha</b></sub>
+  <br/>
+  <img src="https://github-profile-trophy.vercel.app/?username=RyanHenrique20&theme=chalk&no-frame=true&no-bg=true&margin-w=6&margin-h=6&row=2&column=7" alt="Todos os troféus" />
+  <br/><br/>
+  <sub>🥇 <b>Medalhas de elite (rank S e acima, aparecem conforme você evolui)</b></sub>
+  <br/>
+  <img src="https://github-profile-trophy.vercel.app/?username=RyanHenrique20&rank=SECRET,SSS,SS,S&theme=darkhub&no-frame=true&no-bg=true&margin-w=6&row=1&column=6" alt="Troféus de elite" />
 </div>
 
 ### 🌌 Mapa de Batalha
 
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=RyanHenrique20&bg_color=000000&color=FFFFFF&line=FFFFFF&point=FFFFFF&area=true&area_color=FFFFFF&hide_border=true&custom_title=%E2%98%84%EF%B8%8F%20Asteroides%20Destru%C3%ADdos%20por%20Dia" alt="Gráfico de atividade" />
+  <br/><br/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=RyanHenrique20&bg_color=000000&color=AAAAAA&line=FFFFFF&point=FFFFFF&area=false&hide_border=true&days=90&custom_title=%F0%9F%9B%B8%20Radar%20de%2090%20Dias" alt="Gráfico de atividade 90 dias" />
+  <br/><br/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=RyanHenrique20&bg_color=000000&color=FFFFFF&line=AAAAAA&point=FFFFFF&area=true&area_color=444444&hide_border=true&days=14&custom_title=%F0%9F%92%A5%20%C3%9Altimos%2014%20Dias%20de%20Combate" alt="Gráfico de atividade 14 dias" />
+  <br/><br/>
+  <sub>📅 <b>Calendário de Combates (cada quadradinho é um dia de tiro)</b></sub>
+  <br/>
+  <img src="https://ghchart.rshah.org/9CA3AF/RyanHenrique20" alt="Calendário de contribuições" width="95%" />
 </div>
 
 <p align="center">🪨 · · · ☄️ · · · · 🛸 · · · · · 💥 · · · · 🚀 · · · ☄️ · · · 🪨</p>
