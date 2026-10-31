@@ -11,7 +11,7 @@
 <g transform="translate(85.8,140) scale(1.35)" filter="url(#glow)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>
 <text x="85.8" y="138" font-size="17" text-anchor="middle" font-weight="bold" fill="#fff">C</text>
 <text x="85.8" y="196" font-size="10" text-anchor="middle" font-weight="bold" fill="#fff">COMMITS</text>
-<g filter="url(#glow)"><text x="85.8" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff">64</text></g>
+<g filter="url(#glow)"><text x="85.8" y="217" font-size="18" text-anchor="middle" font-weight="bold" fill="#fff">66</text></g>
 <text x="85.8" y="233" font-size="9" text-anchor="middle" font-weight="normal" fill="#fff" opacity="0.55">PROX: 100</text>
 <rect x="153.8" y="84" width="115.6" height="158" fill="none" stroke="#fff" stroke-opacity="0.8"/>
 <g transform="translate(211.60000000000002,140) scale(1.35)" filter="url(#glow)"><path d="M-15,-22 H15 V-6 C15,8 6,14 0,14 C-6,14 -15,8 -15,-6 Z" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M-15,-18 H-23 C-23,-6 -19,0 -13,2 M15,-18 H23 C23,-6 19,0 13,2 M0,14 V24 M-10,26 H10" stroke="#fff" fill="none" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/></g>

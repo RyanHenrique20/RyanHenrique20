@@ -12,10 +12,10 @@
 <text x="44" y="104" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">PLACAR DE DESTRUICAO</text>
 <text x="424" y="104" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">MUNICAO MAIS USADA</text>
 <text x="44" y="130" font-size="12" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.85">ASTEROIDES DESTRUIDOS</text>
-<g filter="url(#glow)"><text x="376" y="130" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">80</text></g>
+<g filter="url(#glow)"><text x="376" y="130" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">82</text></g>
 <line x1="44" y1="137" x2="376" y2="137" stroke="#fff" stroke-opacity="0.12"/>
 <text x="44" y="154" font-size="12" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.85">COMMITS</text>
-<g filter="url(#glow)"><text x="376" y="154" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">64</text></g>
+<g filter="url(#glow)"><text x="376" y="154" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">66</text></g>
 <line x1="44" y1="161" x2="376" y2="161" stroke="#fff" stroke-opacity="0.12"/>
 <text x="44" y="178" font-size="12" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.85">PULL REQUESTS</text>
 <g filter="url(#glow)"><text x="376" y="178" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">2</text></g>
