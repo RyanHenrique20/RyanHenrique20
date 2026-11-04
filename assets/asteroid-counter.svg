@@ -69,7 +69,7 @@
 <text x="130" y="82" font-size="48" opacity="0">009200<animate attributeName="opacity" calcMode="discrete" keyTimes="0;0.3750" values="0;1" dur="8.0s" repeatCount="indefinite"/></text>
 </g>
 <text x="130" y="104" fill="#fff" font-size="12" font-weight="bold">82 ASTEROIDES x 100  +  2 ESTRELAS x 500</text>
-<text x="130" y="126" fill="#fff" opacity="0.6" font-size="10">100 PTS POR ASTEROIDE · 12 MESES · ATUALIZADO 2026-11-03</text>
+<text x="130" y="126" fill="#fff" opacity="0.6" font-size="10">100 PTS POR ASTEROIDE · 12 MESES · ATUALIZADO 2026-11-04</text>
 <g fill="#fff" font-weight="bold" text-anchor="end" filter="url(#glow)">
 <text x="770" y="30" font-size="16">LV.01  ·  82 ASTEROIDES</text>
 <text x="770" y="52" font-size="13">CADETE ESPACIAL</text>
