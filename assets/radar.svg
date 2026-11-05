@@ -12,10 +12,10 @@
 <text x="44" y="104" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">PLACAR DE DESTRUICAO</text>
 <text x="424" y="104" font-size="10" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.6">MUNICAO MAIS USADA</text>
 <text x="44" y="130" font-size="12" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.85">ASTEROIDES DESTRUIDOS</text>
-<g filter="url(#glow)"><text x="376" y="130" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">147</text></g>
+<g filter="url(#glow)"><text x="376" y="130" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">148</text></g>
 <line x1="44" y1="137" x2="376" y2="137" stroke="#fff" stroke-opacity="0.12"/>
 <text x="44" y="154" font-size="12" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.85">COMMITS</text>
-<g filter="url(#glow)"><text x="376" y="154" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">131</text></g>
+<g filter="url(#glow)"><text x="376" y="154" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">132</text></g>
 <line x1="44" y1="161" x2="376" y2="161" stroke="#fff" stroke-opacity="0.12"/>
 <text x="44" y="178" font-size="12" text-anchor="start" font-weight="normal" fill="#fff" opacity="0.85">PULL REQUESTS</text>
 <g filter="url(#glow)"><text x="376" y="178" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">2</text></g>
@@ -36,13 +36,13 @@
 <g filter="url(#glow)"><text x="376" y="298" font-size="15" text-anchor="end" font-weight="bold" fill="#fff">11</text></g>
 <line x1="44" y1="305" x2="376" y2="305" stroke="#fff" stroke-opacity="0.12"/>
 <text x="424" y="130" font-size="12" text-anchor="start" font-weight="bold" fill="#fff">HTML</text>
-<text x="756" y="130" font-size="12" text-anchor="end" font-weight="normal" fill="#fff">60.7%</text>
+<text x="756" y="130" font-size="12" text-anchor="end" font-weight="normal" fill="#fff">60.8%</text>
 <rect x="424" y="137" width="332" height="8" fill="none" stroke="#fff" stroke-opacity="0.6"/>
-<rect x="424" y="137" width="201.6" height="8" fill="#fff"/>
+<rect x="424" y="137" width="201.8" height="8" fill="#fff"/>
 <text x="424" y="160" font-size="12" text-anchor="start" font-weight="bold" fill="#fff">CSS</text>
 <text x="756" y="160" font-size="12" text-anchor="end" font-weight="normal" fill="#fff">29.0%</text>
 <rect x="424" y="167" width="332" height="8" fill="none" stroke="#fff" stroke-opacity="0.6"/>
-<rect x="424" y="167" width="96.3" height="8" fill="#fff"/>
+<rect x="424" y="167" width="96.1" height="8" fill="#fff"/>
 <text x="424" y="190" font-size="12" text-anchor="start" font-weight="bold" fill="#fff">JAVASCRIPT</text>
 <text x="756" y="190" font-size="12" text-anchor="end" font-weight="normal" fill="#fff">7.6%</text>
 <rect x="424" y="197" width="332" height="8" fill="none" stroke="#fff" stroke-opacity="0.6"/>
